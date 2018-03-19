@@ -54,11 +54,11 @@ const config = {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),
-        new UglifyJsPlugin({
-            cache: true,
-            sourceMap: true,
-            parallel: true,
-        }),
+        // new UglifyJsPlugin({
+        //     cache: true,
+        //     sourceMap: true,
+        //     parallel: true,
+        // }),
         // new BundleAnalyzerPlugin(),
     ]
 };
@@ -67,13 +67,13 @@ const array = fs.readdirSync('./app')
     .filter(file => file.match(/^\d\d-/) &&
         fs.lstatSync('./app/' + file).isDirectory());
 
-console.log('array', array);
+// console.log('array', array);
 
 array.forEach((dir) => {
     const bundle = dir.substring(0, 3) + 'bundle';
     config.entry[bundle] = `./app/${dir}/main.ts`;
 });
 
-console.log('config', config);
+// console.log('config', config);
 
 module.exports = config;

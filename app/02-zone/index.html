@@ -8,7 +8,26 @@
 </head>
 
 <body>
-    <my-app>Loading AppComponent content here ...</my-app>
+    <h1>Understanding Zone.js</h1>
+    <p>A zone is a new kind of object added by the library
+        <code>Zone.js</code>. A zone serves as context to any kind of functions and is accessed by
+        <code>Zone.current</code>.</p>
+
+    <ol>
+        <li>At the beginning, one global zone is created by the Zone.js library:
+            <code>Zone.current</code>.</li>
+        <li>A new zone can be created by
+            <code>child = z.fork()</code>, if
+            <code>z</code> is a zone.</li>
+        <li>
+            <code>myZone.run(myFn)</code> run the function
+            <code>myFn</code> with the current zone set to
+            <code>myZone</code>.</li>
+        <li>Zones have a name and a parent.</li>
+        <li>Zones have properties where to store any kind of contextual data.</li>
+        <li>Zones have outstanding tasks.</li>
+        <li></li>
+    </ol>
     <script src="../wpk/polyfills.js"></script>
     <script src="../wpk/vendor.js"></script>
     <script src="../wpk/02-bundle.js"></script>
