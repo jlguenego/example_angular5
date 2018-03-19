@@ -1,6 +1,4 @@
-import 'zone.js/dist/zone.js';
-
-async function sleep(time: number) {
+async function sleep(time) {
     return new Promise((resolve) => {
         setTimeout(() => { resolve() }, time);
     });
@@ -13,7 +11,7 @@ const logBold = console.log.bind(console, '%c%s', 'color: black; font-weight:bol
     logBold('1) At the beginning, there is always only one zone: the root zone.');
     console.log('Zone %O', Zone);
     console.log('Zone.current', Zone.current);
-    await sleep(10);
+    await sleep(1000);
     logBold('2) creating 2 zones with fork');
 
     // We create a new zone by forking an existing zone.
@@ -27,14 +25,17 @@ const logBold = console.log.bind(console, '%c%s', 'color: black; font-weight:bol
 
     zoneA.run(async () => {
         console.log('3(A)->Zone.current', Zone.current);
-        await sleep(10);
+        await sleep(10); // the zone survives this when it is Typescript, but not native JS. Use the Promise instead.
+        // https://github.com/angular/zone.js/issues/740
         console.log('3(A)->Zone.current', Zone.current);
     });
 
     zoneB.run(async () => {
         console.log('3(B)->Zone.current', Zone.current);
-        await sleep(20);
-        console.log('3(B)->Zone.current', Zone.current);
+        sleep(20).then(() => {
+            // this will works even in JS.
+            console.log('3(B)->Zone.current', Zone.current);
+        });
     });
     await sleep(30);
 
@@ -43,13 +44,16 @@ const logBold = console.log.bind(console, '%c%s', 'color: black; font-weight:bol
     console.log('zoneA parent name', zoneA.parent.name);
 
     logBold('5) zones have also properties.');
-    let zoneC = Zone.current.fork({ name: 'zoneC', properties: { hello: {} } });
+    let zoneC = Zone.current.fork({ name: 'zoneC', properties: { hello: {world: 23} } });
 
     zoneC.run(async () => {
         const hello = Zone.current.get('hello');
         hello.world = 'foo';
-        await sleep(10);
-        console.log('Getting some context data of the current zone: ', Zone.current.get('hello').world);
+        console.log('Getting some context data of the current zone: ', Zone.current.name, Zone.current.get('hello'));
+        setTimeout(() => {
+            // The zone survives this in JS.
+            console.log('Getting some context data of the current zone: ', Zone.current.name, Zone.current.get('hello'));
+        }, 10);
     });
 
     await sleep(20);
@@ -88,8 +92,8 @@ const logBold = console.log.bind(console, '%c%s', 'color: black; font-weight:bol
     });
     await sleep(30);
     logBold('7) Each task can trigger a special callback onInvokeTask');
-    let timer: number;
-    let zoneE = Zone.current.fork({ name: 'zoneE', onInvokeTask(delegate, currentZone, targetZone, task, ...args: any[]) {
+    let timer;
+    let zoneE = Zone.current.fork({ name: 'zoneE', onInvokeTask(delegate, currentZone, targetZone, task, ...args) {
         const name = task.callback.name;
         console.log('about to invoke the task', name);
         const result = delegate.invokeTask(targetZone, task, delegate, args);
@@ -125,13 +129,13 @@ const logBold = console.log.bind(console, '%c%s', 'color: black; font-weight:bol
     logBold('8) When entering a Zone, we can trigger a callback using <code>onInvoke</code>.');
     const zoneF = Zone.current.fork({
         name: 'zoneF',
-        onInvoke(delegate, current, target, callback, ...args: any[]) {
+        onInvoke(delegate, current, target, callback, ...args) {
             console.log(`entering zone '${target.name}'`);
             return delegate.invoke(target, callback, 'this is a THIS', ['args0', 'args1'], 'this is the source string');
         }
     });
     
-    function toto(...args: any[]) {
+    function toto(...args) {
         console.log('this', this);
         console.log('args', args);
         console.log('zone', Zone.current);
