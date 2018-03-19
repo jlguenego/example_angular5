@@ -50,7 +50,8 @@ const config = {
             name: ['vendor', 'polyfills']
         }),
         new UglifyJsPlugin({
-            cache: true
+            cache: true,
+            sourceMap: true,
         }),
     ]
 };
