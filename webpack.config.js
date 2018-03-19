@@ -4,9 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        polyfills: './app/common/polyfills.ts',
-        vendor: './app/common/vendor.ts',
-        bundle: './app/01-hello-world/main.ts'
+        bundle: './main.ts'
     },
     output: {
         filename: '[name].js',
@@ -42,9 +40,6 @@ module.exports = {
     devtool: 'source-map',
     plugins: [
         new ExtractTextPlugin('[name].css'),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['bundle', 'vendor', 'polyfills']
-        }),
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core/,
             path.resolve(__dirname, '../app')
