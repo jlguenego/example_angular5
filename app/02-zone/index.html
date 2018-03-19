@@ -25,8 +25,9 @@
             <code>myZone</code>.</li>
         <li>Zones have a name and a parent.</li>
         <li>Zones have properties where to store any kind of contextual data.</li>
-        <li>Zones have outstanding tasks.</li>
-        <li></li>
+        <li>Zones have outstanding tasks. State of task queue (empty/not empty) has hook called <code>onHasTask</code></li>
+        <li>On every task, Zone can decorate the task with <code>onInvokeTask</code> (good for replacing the AngularJS <code>$scope.$digest()</code>)</li>
+        <li>When entering a Zone, we can trigger a callback using <code>onInvoke</code>.</li>
     </ol>
     <script src="../wpk/polyfills.js"></script>
     <script src="../wpk/vendor.js"></script>
