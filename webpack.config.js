@@ -4,11 +4,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        bundle: './main.ts'
+        '01-bundle': './app/01-hello-world/main.ts',
+        '02-bundle': './app/02-hello-world/main.ts',
+        polyfills: './app/common/polyfills.ts',
+        vendor: './app/common/vendor.ts',
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, './app/01-hello-world/wpk')
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
@@ -44,5 +46,8 @@ module.exports = {
             /angular(\\|\/)core/,
             path.resolve(__dirname, '../app')
         ),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor', 'polyfills']
+        }),
     ]
 }
