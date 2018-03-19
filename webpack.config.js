@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
     entry: {
@@ -47,6 +48,9 @@ const config = {
         ),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
+        }),
+        new UglifyJsPlugin({
+            cache: true
         }),
     ]
 };
