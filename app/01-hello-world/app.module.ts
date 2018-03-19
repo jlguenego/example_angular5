@@ -1,3 +1,5 @@
+import '../common/vendor';
+
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 

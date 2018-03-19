@@ -4,9 +4,9 @@ const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const {
-    BundleAnalyzerPlugin
-} = require('webpack-bundle-analyzer');
+// const {
+//     BundleAnalyzerPlugin
+// } = require('webpack-bundle-analyzer');
 
 const config = {
     entry: {
@@ -22,6 +22,7 @@ const config = {
     module: {
         rules: [{
             test: /\.ts$/,
+            include: path.resolve(__dirname, 'app'),
             exclude: /node_modules/,
             use: [{
                 loader: 'awesome-typescript-loader',
@@ -58,7 +59,7 @@ const config = {
             sourceMap: true,
             parallel: true,
         }),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
     ]
 };
 

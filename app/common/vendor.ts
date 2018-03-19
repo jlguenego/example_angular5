@@ -1,3 +1,5 @@
+import './polyfills';
+
 import 'zone.js/dist/zone.js';
 import 'rxjs';
 
