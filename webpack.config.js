@@ -1,11 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
+const config = {
     entry: {
-        '01-bundle': './app/01-hello-world/main.ts',
-        '02-bundle': './app/02-hello-world/main.ts',
         polyfills: './app/common/polyfills.ts',
         vendor: './app/common/vendor.ts',
     },
@@ -50,4 +49,17 @@ module.exports = {
             name: ['vendor', 'polyfills']
         }),
     ]
-}
+};
+
+const array = fs.readdirSync('./app')
+    .filter(file => file.match(/^\d\d-/) &&
+        fs.lstatSync('./app/' + file).isDirectory());
+
+console.log('array', array);
+
+array.forEach((dir) => {
+    const bundle = dir.substring(0, 3) + 'bundle';
+    config.entry[bundle] = `./app/${dir}/main.ts`;
+});
+
+module.exports = config;
