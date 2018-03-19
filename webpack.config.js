@@ -4,6 +4,10 @@ const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+const {
+    BundleAnalyzerPlugin
+} = require('webpack-bundle-analyzer');
+
 const config = {
     entry: {
         polyfills: './app/common/polyfills.ts',
@@ -52,7 +56,9 @@ const config = {
         new UglifyJsPlugin({
             cache: true,
             sourceMap: true,
+            parallel: true,
         }),
+        new BundleAnalyzerPlugin(),
     ]
 };
 
@@ -66,5 +72,7 @@ array.forEach((dir) => {
     const bundle = dir.substring(0, 3) + 'bundle';
     config.entry[bundle] = `./app/${dir}/main.ts`;
 });
+
+console.log('config', config);
 
 module.exports = config;
