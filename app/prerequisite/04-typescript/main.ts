@@ -38,13 +38,17 @@ function logClassName<T>(constructorFn: { new(...args: any[]): T; }): void {
     console.log('class name:', constructorFn.name);
 }
 
-class MyClass { 
-    constructor(name) {}
+class MyClass {
+    constructor(name) { }
 }
 logClassName(MyClass);
 
-// decorators
+// decorators that add a log method.
 function logClass<T extends { new(...args: any[]): {} }>(constructor: T) {
+
+    constructor.prototype.log = function () {
+        console.log('log my class:', this.constructor.name);
+    }
 
     // a utility function to generate instances of a class
     function construct(constructor, args) {
@@ -58,6 +62,7 @@ function logClass<T extends { new(...args: any[]): {} }>(constructor: T) {
     // the new constructor behaviour
     var f: any = function (...args) {
         console.log("New: " + constructor.name);
+        console.log('This: %O', constructor);
         return construct(constructor, args);
     }
 
@@ -75,8 +80,13 @@ class Someone {
         console.log('hello');
     }
 }
+interface LogMyClass {
+    log(): void;
+}
+interface Someone extends LogMyClass { }
 
 const mySelf = new Someone();
 const myFriend = new Someone();
 mySelf.hello();
-console.log('mySelf class name', Someone.name)
+mySelf.log();
+console.log('mySelf class name', myFriend.constructor.name)
