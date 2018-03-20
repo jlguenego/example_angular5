@@ -6,12 +6,15 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es2015", "dom"],
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "lib": ["es2017", "dom"],
   },
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
-    "useWebpackText": true
+    "useWebpackText": true,
+    "silent": true,
+    "useCache": true,
+    "isolatedModules": true,
+    "forceIsolatedModules": true
+    
   }
 }

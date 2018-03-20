@@ -27,9 +27,9 @@ const config = {
             exclude: /node_modules/,
             use: [{
                 loader: 'awesome-typescript-loader',
-                options: {
-                    configFileName: path.resolve(__dirname, './tsconfig.json')
-                }
+                // options: {
+                //     configFileName: path.resolve(__dirname, './tsconfig.json')
+                // }
             }]
         }, {
             test: /\.css$/,
