@@ -3,6 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
 
 // const {
 //     BundleAnalyzerPlugin
@@ -61,6 +63,7 @@ const config = {
         //     parallel: true,
         // }),
         // new BundleAnalyzerPlugin(),
+        new HardSourceWebpackPlugin(),
     ]
 };
 
