@@ -10,6 +10,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
     entry: {
+        'prerequisite-typescript': './app/prerequisite/04-typescript/main.ts',
         polyfills: './app/common/polyfills.ts',
         vendor: './app/common/vendor.ts',
     },
