@@ -1,19 +1,7 @@
 (function () {
     'use strict';
 
-    var myObs = Rx.Observable.create(function (observer) {
-        console.log('observable definition spec called.');
-        observer.next(1);
-        observer.next(2);
-        observer.next(3);
-        setTimeout(() => {
-            observer.next(4);
-            observer.complete();
-        }, 1000);
-        return (...args) => {
-            console.log('unsubscribe', args);
-        };
-    });
+    var myObs = Rx.Observable.interval(100);
 
     var subject = new Rx.Subject();
     var s1 = subject.subscribe({
@@ -31,10 +19,10 @@
     myObs.subscribe(subject);
     setTimeout(() => {
         s1.unsubscribe();
-    }, 800);
+    }, 850);
     setTimeout(() => {
         s2.unsubscribe();
-    }, 1200);
+    }, 1250);
 
     
 
