@@ -44,37 +44,41 @@ class MyClass {
 logClassName(MyClass);
 
 // decorators that add a log method.
-function logClass<T extends { new(...args: any[]): {} }>(constructor: T) {
+function logClass(...args: any[]) {
+    return function <T extends { new(...args: any[]): {} }>(constructor: T) {
 
-    constructor.prototype.log = function () {
-        console.log('log my class:', this.constructor.name);
-    }
-
-    // a utility function to generate instances of a class
-    function construct(constructor, args) {
-        var c: any = function () {
-            return constructor.apply(this, args);
+        constructor.prototype.log = function () {
+            console.log('log my class:', this.constructor.name);
+            console.log('log my config:', args);
         }
-        c.prototype = constructor.prototype;
-        return new c();
+    
+        // a utility function to generate instances of a class
+        function construct(constructor, args) {
+            var c: any = function () {
+                return constructor.apply(this, args);
+            }
+            c.prototype = constructor.prototype;
+            return new c();
+        }
+    
+        // the new constructor behaviour
+        var f: any = function (...args) {
+            console.log("New: " + constructor.name);
+            console.log('This: %O', constructor);
+            return construct(constructor, args);
+        }
+    
+        // copy prototype so intanceof operator still works
+        f.prototype = constructor.prototype;
+    
+        // return new constructor (will override original)
+        return f;
     }
-
-    // the new constructor behaviour
-    var f: any = function (...args) {
-        console.log("New: " + constructor.name);
-        console.log('This: %O', constructor);
-        return construct(constructor, args);
-    }
-
-    // copy prototype so intanceof operator still works
-    f.prototype = constructor.prototype;
-
-    // return new constructor (will override original)
-    return f;
 }
 
+
 // A class decorator: called when defining the class.
-@logClass
+@logClass({coucou: 'kiki'})
 class Someone {
     hello() {
         console.log('hello');
