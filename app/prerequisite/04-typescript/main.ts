@@ -80,6 +80,3 @@ const mySelf = new Someone();
 const myFriend = new Someone();
 mySelf.hello();
 console.log('mySelf class name', Someone.name)
-
-
-
