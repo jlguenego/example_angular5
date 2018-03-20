@@ -47,26 +47,4 @@
         .scan(c => c + 1, counter3)
         .subscribe(c => counter3Txt.innerHTML = c);
 
-    console.log('2) Create an observable from an array.');
-    var myObs = Rx.Observable.create(function (observer) {
-        observer.next(1);
-        observer.next(2);
-        observer.next(3);
-        setTimeout(() => {
-            observer.next(4);
-            observer.complete();
-        }, 1000);
-    });
-
-    setTimeout(() => {
-        console.log('just before subscribe');
-        myObs.subscribe({
-            next: x => console.log('got value ' + x),
-            error: err => console.error('something wrong occurred: ' + err),
-            complete: () => console.log('done'),
-        });
-        console.log('just after subscribe');
-
-    }, 1000);
-
 })();
