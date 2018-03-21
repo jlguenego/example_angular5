@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
-  selector: '[draggable]'
+  selector: '[jlg-draggable]'
 })
 export class DraggableDirective {
 
@@ -18,11 +18,13 @@ export class DraggableDirective {
     const style = this.element.nativeElement.style;
     style.position = 'relative';
     style.border = '1px solid red';
-    style.backgroundColor = 'lightgrey';
-    style.cursor = 'pointer';
+    style.cursor = 'move';
+    if (this.doesHighlight) {
+      style.backgroundColor = 'lightgrey';
+    }
   }
 
-  @Input('draggable') doesHighlight: boolean;
+  @Input('jlg-draggable') doesHighlight: boolean = true;
 
   @HostListener('mousedown', ['$event']) onMouseDown(event) {
     console.log('mousedown', event);
