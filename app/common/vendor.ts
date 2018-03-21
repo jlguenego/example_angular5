@@ -1,6 +1,5 @@
 import './polyfills';
 
-import 'zone.js/dist/zone.js';
 import 'rxjs';
 
 import '@angular/platform-browser';

@@ -47,10 +47,13 @@ logClassName(MyClass);
 function logClass(...args: any[]) {
     return function <T extends { new(...args: any[]): {} }>(constructor: T) {
 
+        // we add a log method to the class.
         constructor.prototype.log = function () {
             console.log('log my class:', this.constructor.name);
             console.log('log my config:', args);
         }
+
+        // and we change the constructor by a new one.
     
         // a utility function to generate instances of a class
         function construct(constructor, args) {
