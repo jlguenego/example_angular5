@@ -1,5 +1,3 @@
-import './polyfills';
-
 import 'rxjs';
 
 import '@angular/platform-browser';

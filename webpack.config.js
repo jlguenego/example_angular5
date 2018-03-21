@@ -28,10 +28,12 @@ const config = {
             include: path.resolve(__dirname, 'app'),
             exclude: /node_modules/,
             use: [{
+                loader: 'angular2-template-loader'
+            }, {
                 loader: 'awesome-typescript-loader',
-                // options: {
-                //     configFileName: path.resolve(__dirname, './tsconfig.json')
-                // }
+                options: {
+                    configFileName: path.resolve(__dirname, './tsconfig.json')
+                }
             }]
         }, {
             test: /\.css$/,
@@ -62,20 +64,20 @@ const config = {
             /angular(\\|\/)core/,
             path.resolve(__dirname, '../app')
         ),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['vendor', 'polyfills']
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: ['vendor', 'polyfills']
+        // }),
         // new UglifyJsPlugin({
         //     cache: true,
         //     sourceMap: true,
         //     parallel: true,
         // }),
         // new BundleAnalyzerPlugin(),
-        new HardSourceWebpackPlugin(),
+        // new HardSourceWebpackPlugin(),
     ]
 };
 
-const files = glob.sync('**/main.ts', {});
+const files = glob.sync('app/02-*/**/main.ts', {});
 console.log('files', files);
 
 files.forEach((file) => {
