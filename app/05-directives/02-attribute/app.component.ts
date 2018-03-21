@@ -9,6 +9,4 @@ import { Component } from '@angular/core';
 <span [jlg-draggable] bg-color="yellow">And me also!</span>
 `,
 })
-export class AppComponent { 
-  
-}
+export class AppComponent { }
