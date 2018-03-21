@@ -2,6 +2,16 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  template: `
+<h1>Look at this image</h1>
+<img [src]="niceImageUrl">
+`,
+  styles: [`
+img {
+  width: 400px;
+}
+`],
 })
-export class AppComponent  { name = 'Angular !!!'; }
+export class AppComponent {
+  niceImageUrl = '../../assets/chateau.jpg';
+}
