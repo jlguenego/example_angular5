@@ -108,8 +108,8 @@ const logBold = console.log.bind(console, '%c%s', 'color: black; font-weight:bol
         console.log('zoneE start');
 
         const task = (n) => {
-            return function macrotaskFn() {
-                console.log(`executing macrotask ${n} with zone ${Zone.current.name}`);
+            return function taskFn() {
+                console.log(`executing task ${n} with zone ${Zone.current.name}`);
                 return 'hello';
             };
         };
