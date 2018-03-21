@@ -42,7 +42,7 @@ function logLength<T>(array: T[]): void {
     console.log('array length', array.length);
 }
 
-logLength([1, 2, 3]);
+logLength([1, 2, 3, 'coucou']);
 
 function logClassName<T>(constructorFn: { new(...args: any[]): T; }): void {
     console.log('class name:', constructorFn.name);
