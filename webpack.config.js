@@ -4,6 +4,7 @@ const fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const glob = require("glob");
 
 
 // const {
@@ -12,7 +13,6 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const config = {
     entry: {
-        'prerequisite-typescript': './app/prerequisite/04-typescript/main.ts',
         polyfills: './app/common/polyfills.ts',
         vendor: './app/common/vendor.ts',
     },
@@ -67,17 +67,15 @@ const config = {
     ]
 };
 
-const array = fs.readdirSync('./app')
-    .filter(file => file.match(/^\d\d-/) &&
-        fs.lstatSync('./app/' + file).isDirectory());
+const files = glob.sync('**/main.ts', {});
+console.log('files', files);
 
-// console.log('array', array);
-
-array.forEach((dir) => {
-    const bundle = dir.substring(0, 3) + 'bundle';
-    config.entry[bundle] = `./app/${dir}/main.ts`;
+files.forEach((file) => {
+    const prefix = file.replace(/^app(.*)\/main.ts$/, '$1').replace(/\/(...)[^/]*/g, '$1');
+    const bundle = prefix + 'bundle';
+    config.entry[bundle] = `./${file}`;
 });
 
-// console.log('config', config);
+console.log('config', config);
 
 module.exports = config;
