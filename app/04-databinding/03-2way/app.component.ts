@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  template: `
+<h1>2 ways binding</h1>
+<input [(ngModel)]="myName">
+{{myName}}
+`,
 })
-export class AppComponent  { name = 'Angular !!!'; }
+export class AppComponent { myName = 'Angular'; }
