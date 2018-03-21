@@ -6,7 +6,7 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["es2017", "dom"]
   },
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
