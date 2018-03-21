@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 {{myName}}
 `,
 })
-export class AppComponent { myName = 'Angular'; }
+export class AppComponent { 
+  myName = 'Angular'; 
+  i = 0;
+
+  ngOnInit() {
+    console.log('init the component');
+    setInterval(() => {
+      this.i++;
+      this.myName = `Angular ${this.i}`;
+    }, 1000);
+  }
+}
