@@ -2,18 +2,28 @@
 interface Person {
     name: string,
     firstname: string,
-    age: number,
+    birthday: Date,
 };
 
+function getAge(birthDate) {
+    var today = new Date();
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
 function sayHello(person: Person) {
-    console.log(`Hello, I am ${person.firstname} ${person.name.toUpperCase()}, I am ${person.age} years old.`);
+    console.log(`Hello, I am ${person.firstname} ${person.name.toUpperCase()}, I am ${getAge(person.birthday)} years old.`);
 }
 
 let person: Person;
 person = {
     name: 'Guénégo',
     firstname: 'Jean-Louis',
-    age: 43
+    birthday: new Date(1974, 4, 19),
 };
 
 sayHello(person);
@@ -54,7 +64,7 @@ function logClass(...args: any[]) {
         }
 
         // and we change the constructor by a new one.
-    
+
         // a utility function to generate instances of a class
         function construct(constructor, args) {
             var c: any = function () {
@@ -63,17 +73,17 @@ function logClass(...args: any[]) {
             c.prototype = constructor.prototype;
             return new c();
         }
-    
+
         // the new constructor behaviour
         var f: any = function (...args) {
             console.log("New: " + constructor.name);
             console.log('This: %O', constructor);
             return construct(constructor, args);
         }
-    
+
         // copy prototype so intanceof operator still works
         f.prototype = constructor.prototype;
-    
+
         // return new constructor (will override original)
         return f;
     }
@@ -81,7 +91,7 @@ function logClass(...args: any[]) {
 
 
 // A class decorator: called when defining the class.
-@logClass({coucou: 'kiki'})
+@logClass({ coucou: 'kiki' })
 class Someone {
     hello() {
         console.log('hello');
