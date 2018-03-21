@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { JLGTimesDirective } from './jlg-times.directive';
+import { JLGTimesDirective } from './jlgTimes.directive';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
