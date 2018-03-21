@@ -20,11 +20,13 @@ export class DraggableDirective {
     style.border = '1px solid red';
     style.cursor = 'move';
     if (this.doesHighlight) {
-      style.backgroundColor = 'lightgrey';
+      style.backgroundColor = this.color;
     }
   }
 
   @Input('jlg-draggable') doesHighlight: boolean = true;
+
+  @Input('bg-color') color: string = 'lightgrey';
 
   @HostListener('mousedown', ['$event']) onMouseDown(event) {
     console.log('mousedown', event);
