@@ -17,6 +17,7 @@ const config = {
         vendor: './app/common/vendor.ts',
     },
     output: {
+        path: path.resolve(__dirname, './app/wpk'),
         filename: '[name].js',
     },
     resolve: {
@@ -77,7 +78,7 @@ const config = {
     ]
 };
 
-const files = glob.sync('app/02-*/**/main.ts', {});
+const files = glob.sync('app/**/main.ts', {});
 console.log('files', files);
 
 files.forEach((file) => {
