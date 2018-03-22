@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { DraggableDirective } from './draggable.directive';
+import { JLGDraggableDirective } from './jlg-draggable.directive';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
-  declarations: [AppComponent, DraggableDirective],
+  declarations: [AppComponent, JLGDraggableDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

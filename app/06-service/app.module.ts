@@ -2,13 +2,19 @@ import '../common/vendor';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { JoinPipe } from './join.pipe';
+import { JLGPasswordToCheck } from './JLGPasswordCheck.component';
+
+import { JLGPasswordCheckerService } from './password.service';
 
 @NgModule({
-  imports: [BrowserModule],
-  declarations: [AppComponent, JoinPipe],
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent, JLGPasswordToCheck],
+  providers: [
+    JLGPasswordCheckerService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 @Directive({
   selector: '[jlg-draggable]'
 })
-export class DraggableDirective {
+export class JLGDraggableDirective {
 
   startX: number = 0;
   startY: number = 0;

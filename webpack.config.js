@@ -65,16 +65,16 @@ const config = {
             /angular(\\|\/)core/,
             path.resolve(__dirname, '../app')
         ),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: ['vendor', 'polyfills']
-        // }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor', 'polyfills']
+        }),
         // new UglifyJsPlugin({
         //     cache: true,
         //     sourceMap: true,
         //     parallel: true,
         // }),
         // new BundleAnalyzerPlugin(),
-        // new HardSourceWebpackPlugin(),
+        new HardSourceWebpackPlugin(),
     ]
 };
 
