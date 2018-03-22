@@ -4,12 +4,17 @@ import { HttpClient } from '@angular/common/http';
 // if you want to use toPromise() on an observable, just add this operator.
 import 'rxjs/add/operator/toPromise';
 
+interface DataJson {
+  content: string,
+}
+
 @Component({
   selector: 'my-app',
   template: `
 <h1>Http</h1>
 <button (click)="onClick()">Click me!</button>
 <button (click)="onClick2()">Click me also!</button>
+<button (click)="onClick3()">Click me v3!</button>
 <button (click)="reset()">Reset</button>
 <div>{{message}}</div>
 `,
@@ -38,6 +43,17 @@ export class AppComponent {
       console.log('data', data);
       this.message = data['content'];
     }).catch(e => console.error('error', e));
+  }
+
+  onClick3() {
+    console.log('solve the typing issue');
+    this.http.get<DataJson>('./data.json').subscribe({
+      next: (data) => {
+        console.log('data', data);
+        this.message = data.content;
+      },
+      error: e => console.error('error', e)
+    });
   }
 
   reset() {
