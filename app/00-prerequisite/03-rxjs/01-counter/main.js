@@ -38,12 +38,11 @@
     });
 
     // RxJS Quick code
-    var counter3 = 0;
-    counter3Txt.innerHTML = counter3;
+    counter3Txt.innerHTML = 0;
 
     Rx.Observable.fromEvent(btn, 'click')
         .throttleTime(1000)
-        .scan(c => c + 1, counter3)
+        .scan(c => c + 1, 0)
         .subscribe(c => counter3Txt.innerHTML = c);
 
 })();
