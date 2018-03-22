@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 // if you want to use toPromise() on an observable, just add this operator.
 import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
 
 interface DataJson {
   content: string,
@@ -16,13 +17,14 @@ interface DataJson {
 <button (click)="onClick2()">Click me also!</button><br>
 <button (click)="onClick3()">Click me v3!</button><br>
 <button (click)="onClick4()">Click me v4!</button><br>
+<button (click)="onClick5()">Click me v5 (url not found)!</button><br>
 <button (click)="reset()">Reset</button>
 <div>{{message}}</div>
 <div>{{status}}</div>
 `,
 
 })
-export class AppComponent { 
+export class AppComponent {
 
   status: string;
   message: string;
@@ -65,7 +67,7 @@ export class AppComponent {
   onClick4() {
     this.reset();
     console.log('look at the full response');
-    this.http.get<DataJson>('./data.json', {observe: 'response'}).subscribe({
+    this.http.get<DataJson>('./data.json', { observe: 'response' }).subscribe({
       next: (response) => {
         console.log('response', response);
         this.message = response.body.content;
@@ -75,8 +77,25 @@ export class AppComponent {
     });
   }
 
+  onClick5() {
+    this.reset();
+    console.log('call the JSON');
+    this.http.get('./data2.json').catch(err => {
+      console.error('error', err);
+      return Observable.throw('ajax problem!')
+    }).subscribe({
+      next: (data) => {
+        console.log('data', data);
+        this.message = data['content'];
+      },
+      error: e => {
+        this.message = e;
+      }
+    });
+  }
+
   reset() {
     this.message = '';
     this.status = '';
   }
- }
+}
