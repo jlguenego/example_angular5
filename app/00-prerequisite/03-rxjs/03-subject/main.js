@@ -16,12 +16,15 @@
     });
 
 
-    myObs.subscribe(subject);
+    var s = myObs.subscribe(subject);
     setTimeout(() => {
         s1.unsubscribe();
     }, 850);
     setTimeout(() => {
         s2.unsubscribe();
+        // warning... memory leak!
+        s.unsubscribe();
     }, 1250);
 
+    
 })();

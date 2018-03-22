@@ -4,11 +4,11 @@
     // CREATE
     var myObs = Rx.Observable.create(function (observer) {
         console.log('observable definition spec called.');
-        observer.next(1);
-        observer.next(2);
-        observer.next(3);
+        observer.next(10);
+        observer.next(20);
+        observer.next(30);
         setTimeout(() => {
-            observer.next(4);
+            observer.next(44);
             // observer.complete();
         }, 1000);
         return function () {
@@ -24,7 +24,7 @@
         {
             next: x => console.log('got value ' + x),
             error: err => console.error('something wrong occurred: ' + err),
-            complete: () => console.log('done'),
+            complete: () => console.log('complete'),
         });
     console.log('just after subscribe 1');
 
@@ -33,7 +33,7 @@
         s2 = myObs.subscribe({
             next: x => console.log('got value ' + x),
             error: err => console.error('something wrong occurred: ' + err),
-            complete: () => console.log('done'),
+            complete: () => console.log('complete'),
         });
         console.log('just after subscribe 2');
     }, 1000);
