@@ -1,14 +1,15 @@
-import '../common/vendor';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './AppRouting/AppRouting.module';
 
 import { AppComponent } from './app.component';
-import { JoinPipe } from './join.pipe';
+
+import { HomeComponent } from './AppRouting/home.component';
+import { AboutComponent } from './AppRouting/about.component';
 
 @NgModule({
-  imports: [BrowserModule],
-  declarations: [AppComponent, JoinPipe],
+  imports: [BrowserModule, AppRoutingModule],
+  declarations: [AppComponent, HomeComponent, AboutComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
