@@ -3,9 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-<h1>List: {{myArray | join: ';'}}</h1>
-<h1>Time: {{now | date}}</h1>
-
+<h1>Http</h1>
+<button></button>
 `,
 })
 export class AppComponent { 
