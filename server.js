@@ -23,6 +23,12 @@ app.use(serveIndex(htdocs, {
     icons: true
 }));
 
+// app.use('/app/07-router', (req, res, next) => {
+//     res.sendFile('./app/07-router/index.html', {
+//         root: __dirname,
+//     });
+// });
+
 app.use(function (req, res, next) {
     console.log('404: Page not Found', req.url);
     next();
