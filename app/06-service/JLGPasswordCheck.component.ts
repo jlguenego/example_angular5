@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { JLGPasswordCheckerService } from './password.service';
+import { JLGPasswordCheckerService, PasswordRule } from './JLGPasswordChecker.service';
 
 @Component({
   selector: 'jlg-password-check',
   template: `
-<span>password check</span>
-<span>{{checkResult}}</span>
+  <div>
+  <h2>password check</h2>
+  <div *ngFor="let rule of rules" [ngStyle]="{'text-decoration': rule.verified ? 'none': 'line-through'}">{{rule.label}}</div>
+  </div>
+
 `,
   providers: [JLGPasswordCheckerService],
 })
@@ -16,7 +19,7 @@ export class JLGPasswordToCheck {
   myPassword: string = '';
   @Input('passwordToCheck') set passwordToCheck(password: string) {
     this.myPassword = password;
-    this.checkResult = this.myService.check(this.myPassword);
+    this.rules = this.myService.check(this.myPassword);
   };
-  checkResult: boolean;
+  rules: PasswordRule[];
 }

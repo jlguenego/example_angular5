@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { JLGPasswordToCheck } from './JLGPasswordCheck.component';
 
-import { JLGPasswordCheckerService } from './password.service';
+import { JLGPasswordCheckerService } from './JLGPasswordChecker.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
