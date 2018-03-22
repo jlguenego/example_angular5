@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { JoinPipe } from './join.pipe';
 
 @NgModule({
-  imports: [BrowserModule],
-  declarations: [AppComponent, JoinPipe],
+  imports: [BrowserModule, HttpClientModule],
+  declarations: [AppComponent],
+  providers: [
+    HttpClient,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
