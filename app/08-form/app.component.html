@@ -1,0 +1,18 @@
+<h1>Forms</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+    <label>
+        <div>Firstname</div>
+        <div>
+            <input type="text" name="firstname" [(ngModel)]="firstname" required>
+        </div>
+        <div>{{error}}</div>
+    </label>
+    <label>
+        <div>Age</div>
+        <div>
+            <input type="text" name="age" [(ngModel)]="age" required age="90">
+        </div>
+        <div>{{error}}</div>
+    </label>
+    <button [disabled]="checkValidity(f)">Submit</button>
+</form>
