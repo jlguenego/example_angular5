@@ -2,11 +2,11 @@
     'use strict';
     console.log('start');
     // var obs1 = Rx.Observable.of(1, 2, 3, 4, 5).delayWhen(n => Rx.Observable.interval(1000 * n).take(1));
-    var obs1 = Rx.Observable.interval(1000).take(5).map(n => {
+    var obs1 = Rx.Observable.interval(1000).map(n => {
         const result = n + 1;
         console.log('result', result);
         return result;
-    });
+    }).take(5);
 
     var multicasted = obs1.multicast(new Rx.Subject()).refCount();
 
