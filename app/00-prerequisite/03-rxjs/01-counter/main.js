@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log('1) Button click counter with at most one click per second.');
+    console.log('Button click counter with at most one click per second.');
 
     var btn = document.querySelector('#incrCounterBtn');
     var counterTxt = document.querySelector('#counterTxt');
@@ -22,8 +22,7 @@
     });
 
     // Same with RxJS
-    var counter2 = 0;
-    counter2Txt.innerHTML = counter2;
+    counter2Txt.innerHTML = 0;
 
     var eventObservable = Rx.Observable.fromEvent(btn, 'click');
     console.log('eventObservable', eventObservable);
@@ -31,7 +30,7 @@
     var throttleObservable = eventObservable.throttleTime(1000);
     console.log('throttleObservable', throttleObservable);
 
-    var observable = throttleObservable.scan(count => count + 1, counter2);
+    var observable = throttleObservable.scan(count => count + 1, 0);
     console.log('observable', observable);
     observable.subscribe((...args) => {
         console.log('args', args);
