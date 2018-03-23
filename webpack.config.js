@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const glob = require("glob");
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 
 // const {
@@ -21,7 +22,10 @@ const config = {
         filename: '[name].js',
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
+        plugins: [
+            new TsConfigPathsPlugin(),
+        ],
     },
     module: {
         rules: [{

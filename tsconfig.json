@@ -4,6 +4,9 @@
     "module": "es2015",
     "moduleResolution": "node",
     "baseUrl": "./",
+    "paths": {
+      "@jlg-example-angular-common/*": ["app/common/*"],
+    },
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
