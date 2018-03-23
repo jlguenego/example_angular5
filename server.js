@@ -2,6 +2,7 @@ const express = require('express');
 const serveIndex = require('serve-index');
 
 const webpackRouter = require('./server/webpack-router.js');
+const wsRouter = require('./server/ws-router.js');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/app/wpk/', webpackRouter);
+app.use('/ws', wsRouter);
 
 const htdocs = '.';
 app.use(express.static(htdocs));
