@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 // if you want to use toPromise() on an observable, just add this operator.
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
-import { exponentialBackoffObservable } from '@jlg-example-angular-common/observable';
+import { exponentialBackoffObservableFromPromise } from '@jlg-example-angular-common/observable';
 
 interface DataJson {
   content: string,
@@ -100,7 +100,7 @@ export class AppComponent {
     this.reset();
     console.log('Handling the error with retry');
     const obs = this.http.get('../../ws/not-well-working');
-    exponentialBackoffObservable(obs.toPromise.bind(obs))
+    exponentialBackoffObservableFromPromise(obs.toPromise.bind(obs))
       .subscribe((data) => {
         console.log('data', data);
         if (data.error) {
