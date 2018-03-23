@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 // if you want to use toPromise() on an observable, just add this operator.
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
+import { exponentialBackoffObservable } from '@jlg-example-angular-common/observable';
 
 interface DataJson {
   content: string,
@@ -18,7 +19,7 @@ interface DataJson {
 <button (click)="onClick3()">Click me v3!</button><br>
 <button (click)="onClick4()">Click me v4!</button><br>
 <button (click)="onClick5()">Click me v5 (url not found)!</button><br>
-<button (click)="onClick5()">Click me v5 (url not found but retry)!</button><br>
+<button (click)="onClick6()">Click me v6 (url randomly failing)!</button><br>
 <button (click)="reset()">Reset</button>
 <div>{{message}}</div>
 <div>{{status}}</div>
@@ -98,18 +99,16 @@ export class AppComponent {
   onClick6() {
     this.reset();
     console.log('Handling the error with retry');
-    this.http.get('./data2.json').catch(err => {
-      console.error('error', err);
-      return Observable.throw('ajax problem!')
-    }).subscribe({
-      next: (data) => {
+    const obs = this.http.get('../../ws/not-well-working');
+    exponentialBackoffObservable(obs.toPromise.bind(obs))
+      .subscribe((data) => {
         console.log('data', data);
-        this.message = data['content'];
-      },
-      error: e => {
-        this.message = e;
-      }
-    });
+        if (data.error) {
+          console.log('error...', data.error)
+        } else {
+          this.message = data.content;
+        }
+      });
   }
 
   reset() {

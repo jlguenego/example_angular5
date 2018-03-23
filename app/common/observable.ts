@@ -6,6 +6,7 @@ export const exponentialBackoffObservable = function <T>(promise: () => Promise<
 
         function f() {
             promise().then((response) => {
+                console.log('ok well done');
                 observer.next(response);
                 observer.complete();
             }).catch((error) => {
