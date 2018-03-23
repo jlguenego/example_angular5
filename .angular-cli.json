@@ -1,0 +1,16 @@
+{
+    "apps": [{
+        "appRoot": ".",
+        "root": "app/10-rest",
+        "prefix": "your-prefix"
+    }],
+    "defaults": {
+        "styleExt": "scss",
+        "component": {
+            "changeDetection": "OnPush"
+        },
+        "service": {
+            "spec": false
+        }
+    }
+}
