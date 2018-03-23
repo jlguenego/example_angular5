@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class RestService {
 
+
   baseUrl: string
 
   constructor(private http: HttpClient) { }
@@ -14,19 +15,34 @@ export class RestService {
     return url;
   }
 
-  retrieveAll(resourceName: string) {
+  retrieveAll(resourceName: string): Promise<Object> {
     console.log('retrieveAll');
-    this.http.get(this.getUrl(resourceName)).subscribe(data => console.log(data));
+    return this.http.get(this.getUrl(resourceName)).toPromise();
   }
 
-  deleteAll(resourceName: string) {
+  deleteAll(resourceName: string): Promise<Object> {
     console.log('create');
-    this.http.delete(this.getUrl(resourceName)).subscribe(data => console.log(data));
+    return this.http.delete(this.getUrl(resourceName)).toPromise();
   }
 
-  create(resourceName: string, content: object) {
+  create(resourceName: string, content: object): Promise<Object> {
     console.log('create');
-    this.http.post(this.getUrl(resourceName), content).subscribe(data => console.log(data));
+    return this.http.post(this.getUrl(resourceName), content).toPromise();
+  }
+
+  retrieve(resourceName: string, id: number): Promise<Object> {
+    console.log('retrieve ', id);
+    return this.http.get(this.getUrl(resourceName) + `/${id}`).toPromise();
+  }
+
+  update(resourceName: string, id: number, content: object): Promise<Object> {
+    console.log('update ', id);
+    return this.http.put(this.getUrl(resourceName) + `/${id}`, content).toPromise();
+  }
+
+  delete(resourceName: string, id: number): Promise<Object> {
+    console.log('delete ', id);
+    return this.http.delete(this.getUrl(resourceName) + `/${id}`).toPromise();
   }
 
 

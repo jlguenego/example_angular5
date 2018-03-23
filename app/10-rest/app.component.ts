@@ -5,19 +5,22 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import { RestService } from './rest.service';
 
-interface DataJson {
-  content: string,
-}
+
 
 @Component({
   selector: 'my-app',
   template: `
 <h1>Rest</h1>
-<button (click)="retrieveAll('tickets')">Retrieve All</button><br>
-<button (click)="deleteAll('tickets')">Delete All</button><br>
+<button (click)="retrieveAll()">Retrieve All</button><br>
+<button (click)="deleteAll()">Delete All</button><br>
 <input [(ngModel)]="name">
-<button (click)="create('tickets')">Create</button><br>
-<div>{{result | json}}</div>
+<button (click)="create()">Create</button><br>
+<input type="number" [(ngModel)]="id">
+<button (click)="retrieve()">Retrieve</button>
+<button (click)="update()">Update</button><br>
+<button (click)="delete()">Delete</button><br>
+
+<div>{{resources | json}}</div>
 `,
   providers: [
     RestService
@@ -27,8 +30,9 @@ interface DataJson {
 export class AppComponent {
 
   resourceName: string = 'ticket';
+  id: number;
 
-  result: Object;
+  resources: Object;
   name: string = 'coucou';
 
   constructor(private rest: RestService) {
@@ -37,12 +41,16 @@ export class AppComponent {
 
   retrieveAll() {
     console.log('retrieveAll', this.resourceName);
-    this.rest.retrieveAll(this.resourceName);
+    this.rest.retrieveAll(this.resourceName)
+      .then(resources => this.resources = resources)
+      .catch(error => console.error('error', error));
   }
 
   deleteAll() {
     console.log('deleteAll', this.resourceName);
-    this.rest.deleteAll(this.resourceName);
+    this.rest.deleteAll(this.resourceName)
+      .then(resources => this.resources = resources)
+      .catch(error => console.error('error', error));
   }
 
   create() {
@@ -50,7 +58,33 @@ export class AppComponent {
     const object = {
       name: this.name,
     }
-    this.rest.create(this.resourceName, object);
+    this.rest.create(this.resourceName, object)
+      .then(resource => console.log(`${this.resourceName} created.`))
+      .catch(error => console.error('error', error));
+  }
+
+  retrieve() {
+    console.log('retrieve', this.resourceName);
+    this.rest.retrieve(this.resourceName, this.id)
+      .then(resource => this.resources = resource)
+      .catch(error => console.error('error', error));
+  }
+
+  update() {
+    console.log('update', this.resourceName);
+    const object = {
+      name: this.name,
+    }
+    this.rest.update(this.resourceName, this.id, object)
+      .then(resource => this.resources = resource)
+      .catch(error => console.error('error', error));
+  }
+
+  delete() {
+    console.log('delete', this.resourceName);
+    this.rest.delete(this.resourceName, this.id)
+      .then(resource => this.resources = resource)
+      .catch(error => console.error('error', error));
   }
 
 }
