@@ -1,7 +1,7 @@
 {
     "apps": [{
         "appRoot": ".",
-        "root": "app/10-rest",
+        "root": "app/common/JLGModule",
         "prefix": "your-prefix"
     }],
     "defaults": {

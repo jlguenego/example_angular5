@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 // if you want to use toPromise() on an observable, just add this operator.
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
-import { exponentialBackoffObservableFromPromise } from '@jlg-example-angular-common/observable';
+import { exponentialBackoffObservableFromPromise, exponentialBackoffObservable } from '@jlg-example-angular-common/observable';
 
 interface DataJson {
   content: string,
@@ -19,7 +19,7 @@ interface DataJson {
 <button (click)="onClick3()">Click me v3!</button><br>
 <button (click)="onClick4()">Click me v4!</button><br>
 <button (click)="onClick5()">Click me v5 (url not found)!</button><br>
-<button (click)="onClick6()">Click me v6 (url randomly failing)!</button><br>
+<button [jlg-click]="onClick6.bind(this)">Click me v6 (url randomly failing)!</button><br>
 <button (click)="reset()">Reset</button>
 <div>{{message}}</div>
 <div>{{status}}</div>
@@ -96,19 +96,19 @@ export class AppComponent {
     });
   }
 
-  onClick6() {
+  onClick6(): Promise<any> {
     this.reset();
     console.log('Handling the error with retry');
     const obs = this.http.get('../../ws/not-well-working');
-    exponentialBackoffObservableFromPromise(obs.toPromise.bind(obs))
-      .subscribe((data) => {
-        console.log('data', data);
-        if (data.error) {
-          console.log('error...', data.error)
-        } else {
-          this.message = data.content;
-        }
-      });
+    // exponentialBackoffObservableFromPromise(obs.toPromise.bind(obs))
+    return exponentialBackoffObservable(obs).toPromise().then((data) => {
+      console.log('data', data);
+      if (data.error) {
+        console.log('error...', data.error)
+      } else {
+        this.message = data.content;
+      }
+    });
   }
 
   reset() {
