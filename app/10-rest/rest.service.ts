@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const log = response => {
-  console.log('response', response);
-  return response;
-};
-
 export interface RestResponse {
   content: Object
 }
+
+const log = (response: RestResponse): RestResponse => {
+  console.log('response', response);
+  return response;
+};
 
 
 @Injectable()
@@ -25,34 +25,34 @@ export class RestService {
     return url;
   }
 
-  retrieveAll(resourceName: string): Promise<Object> {
+  retrieveAll(resourceName: string): Promise<RestResponse> {
     console.log('retrieveAll');
-    return this.http.get(this.getUrl(resourceName)).toPromise().then(log);
+    return this.http.get<RestResponse>(this.getUrl(resourceName)).toPromise().then(log);
   }
 
-  deleteAll(resourceName: string): Promise<Object> {
+  deleteAll(resourceName: string): Promise<RestResponse> {
     console.log('create');
-    return this.http.delete(this.getUrl(resourceName)).toPromise().then(log);
+    return this.http.delete<RestResponse>(this.getUrl(resourceName)).toPromise().then(log);
   }
 
-  create(resourceName: string, content: object): Promise<Object> {
+  create(resourceName: string, content: object): Promise<RestResponse> {
     console.log('create');
-    return this.http.post(this.getUrl(resourceName), content).toPromise().then(log);
+    return this.http.post<RestResponse>(this.getUrl(resourceName), content).toPromise().then(log);
   }
 
-  retrieve(resourceName: string, id: number): Promise<Object> {
+  retrieve(resourceName: string, id: number): Promise<RestResponse> {
     console.log('retrieve ', id);
-    return this.http.get(this.getUrl(resourceName) + `/${id}`).toPromise().then(log);
+    return this.http.get<RestResponse>(this.getUrl(resourceName) + `/${id}`).toPromise().then(log);
   }
 
-  update(resourceName: string, id: number, content: object): Promise<Object> {
+  update(resourceName: string, id: number, content: object): Promise<RestResponse> {
     console.log('update ', id);
-    return this.http.put(this.getUrl(resourceName) + `/${id}`, content).toPromise().then(log);
+    return this.http.put<RestResponse>(this.getUrl(resourceName) + `/${id}`, content).toPromise().then(log);
   }
 
-  delete(resourceName: string, id: number): Promise<Object> {
+  delete(resourceName: string, id: number): Promise<RestResponse> {
     console.log('delete ', id);
-    return this.http.delete(this.getUrl(resourceName) + `/${id}`).toPromise().then(log);
+    return this.http.delete<RestResponse>(this.getUrl(resourceName) + `/${id}`).toPromise().then(log);
   }
 
 

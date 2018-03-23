@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 // if you want to use toPromise() on an observable, just add this operator.
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
-import { RestService } from './rest.service';
+import { RestService, RestResponse } from './rest.service';
 
 
 
@@ -32,7 +32,7 @@ export class AppComponent {
   resourceName: string = 'ticket';
   id: number;
 
-  resources: Object;
+  resources: RestResponse;
   name: string = 'coucou';
 
   constructor(private rest: RestService) {
