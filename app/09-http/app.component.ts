@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 // if you want to use toPromise() on an observable, just add this operator.
 import 'rxjs/add/operator/toPromise';
@@ -23,7 +23,7 @@ export class AppComponent {
   message: string;
   imageURI: SafeUrl;
 
-  constructor(private http: HttpClient, private sanitizer:DomSanitizer) { }
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   onClick() {
     this.reset();
@@ -119,6 +119,23 @@ export class AppComponent {
       error: e => {
         this.message = e;
       }
+    });
+  }
+
+  onClick8() {
+    this.reset();
+    console.log('Getting the image content and expose it.');
+    this.http.get('../../ws/needs-authorization-header', {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'my-auth-token'
+      })
+    }).subscribe({
+      next: (data) => {
+        console.log('data', data);
+        this.message = data['content'];
+      },
+      error: e => console.error('error', e)
     });
   }
 

@@ -34,7 +34,7 @@ export const exponentialBackoffObservable = function <T>(observable: Observable<
                 },
                 error: (error) => {
                     observer.next({ error });
-                    if (maxRetry !== -1 && time > maxRetry ) {
+                    if (maxRetry !== -1 && time > maxRetry) {
                         observer.error(error);
                         return;
                     }
@@ -48,3 +48,8 @@ export const exponentialBackoffObservable = function <T>(observable: Observable<
         f();
     });
 }
+
+export const angularObservable = Observable.interval(100).scan(n => ({
+    string: n.string,
+    cutIndex: (n.cutIndex > n.string.length) ? 0 : n.cutIndex + 1
+}), { string: 'Angular', cutIndex: 0 }).map(n => n.string.substring(0, n.cutIndex));

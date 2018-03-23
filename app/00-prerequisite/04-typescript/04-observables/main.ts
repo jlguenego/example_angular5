@@ -1,6 +1,6 @@
 import { map } from "rxjs/operators";
 import { Observable, Observer } from "rxjs";
-import { exponentialBackoffObservableFromPromise, exponentialBackoffObservable } from "@jlg-example-angular-common/observable";
+import { exponentialBackoffObservableFromPromise, exponentialBackoffObservable, angularObservable } from "@jlg-example-angular-common/observable";
 
 const multiplyBy2 = map((n: number) => 2 * n);
 Observable.of(1, 2, 3).let(multiplyBy2).subscribe(n => console.log('n', n));
@@ -34,3 +34,6 @@ const randomObservable = Observable.create((observer: Observer<any>) => {
 });
 
 exponentialBackoffObservable(randomObservable).subscribe(n => console.log('result', n));
+
+
+// angularObservable.subscribe(n => console.log('n', n));
