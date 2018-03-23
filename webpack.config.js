@@ -84,6 +84,6 @@ files.forEach((file) => {
     config.entry[bundle] = `./${file}`;
 });
 
-console.log('config', config);
+// console.log('config', config);
 
 module.exports = config;

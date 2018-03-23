@@ -1,9 +1,7 @@
 const express = require('express');
 const serveIndex = require('serve-index');
 
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackConfig = require('./webpack.config.js');
+const webpackRouter = require('./server/webpack-router.js');
 
 const app = express();
 
@@ -12,10 +10,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-webpackConfig.output.path = '/';
-const compiler = webpack(webpackConfig);
-// eslint-disable-next-line
-app.use('/app/wpk/', webpackDevMiddleware(compiler, {}));
+app.use('/app/wpk/', webpackRouter);
 
 const htdocs = '.';
 app.use(express.static(htdocs));
