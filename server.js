@@ -20,6 +20,7 @@ app.use(serveIndex(htdocs, {
     icons: true
 }));
 
+// Specific to ex 07: URL Rewriting.
 // app.use('/app/07-router', (req, res, next) => {
 //     res.sendFile('./app/07-router/index.html', {
 //         root: __dirname,
