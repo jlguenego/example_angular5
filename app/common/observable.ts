@@ -21,7 +21,7 @@ export const exponentialBackoffObservableFromPromise = function <T>(promise: () 
     });
 }
 
-export const exponentialBackoffObservable = function <T>(observable: Observable<T>) {
+export const exponentialBackoffObservable = function <T>(observable: Observable<T>, maxRetry: number = -1) {
     return Observable.create((observer) => {
         let time: number = 0;
 
@@ -34,6 +34,10 @@ export const exponentialBackoffObservable = function <T>(observable: Observable<
                 },
                 error: (error) => {
                     observer.next({ error });
+                    if (maxRetry !== -1 && time > maxRetry ) {
+                        observer.error(error);
+                        return;
+                    }
                     const sec = Math.pow(2, time);
                     time++;
                     console.log(`retry #${time} in ${sec} seconds`);

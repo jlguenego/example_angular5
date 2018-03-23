@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+
 // if you want to use toPromise() on an observable, just add this operator.
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
@@ -12,26 +14,16 @@ interface DataJson {
 
 @Component({
   selector: 'my-app',
-  template: `
-<h1>Http</h1>
-<button (click)="onClick()">Click me!</button><br>
-<button (click)="onClick2()">Click me also!</button><br>
-<button (click)="onClick3()">Click me v3!</button><br>
-<button (click)="onClick4()">Click me v4!</button><br>
-<button (click)="onClick5()">Click me v5 (url not found)!</button><br>
-<button [jlg-click]="onClick6.bind(this)">Click me v6 (url randomly failing)!</button><br>
-<button (click)="reset()">Reset</button>
-<div>{{message}}</div>
-<div>{{status}}</div>
-`,
-
+  templateUrl: './app.component.html',
+  styles: ['.castle { width: 300px; }']
 })
 export class AppComponent {
 
   status: string;
   message: string;
+  imageURI: SafeUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private sanitizer:DomSanitizer) { }
 
   onClick() {
     this.reset();
@@ -111,8 +103,28 @@ export class AppComponent {
     });
   }
 
+  onClick7() {
+    this.reset();
+    console.log('Getting the image content and expose it.');
+    this.http.get('../assets/chateau.jpg', { responseType: 'blob' }).subscribe({
+      next: (blob) => {
+        console.log('blob', blob);
+        // convert the blob to URI
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = () => {
+          this.imageURI = this.sanitizer.bypassSecurityTrustUrl(reader.result);
+        }
+      },
+      error: e => {
+        this.message = e;
+      }
+    });
+  }
+
   reset() {
     this.message = '';
     this.status = '';
+    this.imageURI = undefined;
   }
 }
