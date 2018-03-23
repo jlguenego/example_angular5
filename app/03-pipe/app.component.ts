@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
+import { angularObservable } from '@jlg-example-angular-common/observable';
 
 @Component({
   selector: 'my-app',
-  template: `
-<h1>List: {{myArray | join: ';'}}</h1>
-<h1>Time: {{now | date}}</h1>
-
-`,
+  templateUrl: './app.component.html',,
 })
 export class AppComponent { 
   myArray = [1, 2, 3, 'coucou'];
   now = new Date();
+  angularObservable = angularObservable;
  }
