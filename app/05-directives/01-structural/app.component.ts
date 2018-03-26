@@ -4,8 +4,15 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
 <h1>Structural Directive</h1>
-<div *jlgTimes="i">hello</div>
+  <div *jlgTimes="i">hello</div>
 `,
+styles: [
+  `
+  div {
+    padding: 0 1em;
+  }
+  `
+]
 })
 export class AppComponent { 
   i = 1;

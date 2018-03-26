@@ -3,12 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
+<span>
 <h1>Interpolation binding</h1>
+<p style="font-size: 4em;">
 {{myName}}
+</p>
+</span>
 `,
 })
 export class AppComponent { 
-  myName = 'Angular'; 
+  myName = 'Angular 0'; 
   i = 0;
 
   ngOnInit() {
