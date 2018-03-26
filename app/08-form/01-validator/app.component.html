@@ -1,6 +1,6 @@
 <header>Forms</header>
 <section>
-    <form #f="ngForm" (ngSubmit)="onSubmit()">
+    <form #f="ngForm" (ngSubmit)="f.resetForm() && onSubmit()">
         <label>
             <div>Firstname</div>
             <div>
@@ -17,6 +17,7 @@
             </div>
             <ul *ngIf="f.controls.age && f.controls.age.touched && f.controls.age.invalid">
                 <li class="error" *ngIf="f.controls.age.errors.forbiddenAge">Hey, you cannot be that old!</li>
+                <li class="error" *ngIf="f.controls.age.errors.number">Age must be a valid number.</li>
                 <li class="error" *ngIf="f.controls.age.errors.required">Age is required.</li>
             </ul>
         </label>

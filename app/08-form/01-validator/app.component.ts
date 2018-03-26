@@ -10,6 +10,7 @@ const url = 'https://gist.githubusercontent.com/SiamKreative/f1074ed95507e69d08a
 export class AppComponent {
   firstname: string = '';
   region: string = undefined;
+  age: number;
   regions: string[];
 
   constructor(private http: HttpClient) { }
@@ -26,6 +27,9 @@ export class AppComponent {
   onSubmit() {
     console.log('submiting the form');
     alert('Success!');
+    this.firstname = '';
+    this.region = '';
+    this.age = undefined;
   }
 
   checkValidity(f) {
