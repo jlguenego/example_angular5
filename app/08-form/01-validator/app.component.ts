@@ -8,6 +8,7 @@ const url = 'https://gist.githubusercontent.com/SiamKreative/f1074ed95507e69d08a
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  beforeSubmit: boolean = true;
   firstname: string = '';
   region: string = undefined;
   age: number;
@@ -26,15 +27,19 @@ export class AppComponent {
 
   onSubmit() {
     console.log('submiting the form');
-    alert('Success!');
     this.firstname = '';
     this.region = '';
     this.age = undefined;
+    this.beforeSubmit = false;
   }
 
   checkValidity(f) {
     console.log('f', f);
     return f.invalid;
+  }
+
+  goBack() {
+    this.beforeSubmit = true;
   }
 
 }

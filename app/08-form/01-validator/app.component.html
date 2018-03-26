@@ -1,6 +1,6 @@
 <header>Forms</header>
-<section>
-    <form #f="ngForm" (ngSubmit)="f.resetForm() && onSubmit()">
+<section *ngIf="beforeSubmit">
+    <form #f="ngForm" (ngSubmit)="onSubmit(); f.reset();">
         <label>
             <div>Firstname</div>
             <div>
@@ -34,4 +34,8 @@
         </label>
         <button [disabled]="checkValidity(f)">Submit</button>
     </form>
+</section>
+<section *ngIf="!beforeSubmit">
+    Form sucessfully submitted.
+    <button (click)="goBack()" >Back</button>
 </section>
