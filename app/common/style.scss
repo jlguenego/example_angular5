@@ -121,3 +121,13 @@ input.ng-valid {
 input.ng-invalid {
   background: hsla(0, 100%, 50%, 0.1);
 }
+
+.output {
+  display: block;
+  background-color: hsl(0, 0, 90%);
+  padding: 1em;
+  font-size: 2em;
+  >.img {
+    text-align: center;
+  }
+}
