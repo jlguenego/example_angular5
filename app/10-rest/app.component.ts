@@ -47,14 +47,17 @@ export class AppComponent {
       name: this.name,
     }
     this.rest.create(this.resourceName, object)
-      .then(resource => console.log(`${this.resourceName} created.`))
+      .then(() => this.retrieveAll())
       .catch(error => console.error('error', error));
   }
 
   retrieve() {
     console.log('retrieve', this.resourceName);
     this.rest.retrieve(this.resourceName, this.id)
-      .then(resource => this.resources = resource)
+      .then(resource => {
+        this.resources = {content:[resource.content]};
+        console.log('this resources', this.resources);
+      })
       .catch(error => console.error('error', error));
   }
 
