@@ -5,7 +5,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const glob = require("glob");
-const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
+const {
+    TsConfigPathsPlugin
+} = require('awesome-typescript-loader');
 
 
 // const {
@@ -29,35 +31,45 @@ const config = {
     },
     module: {
         rules: [{
-            test: /\.ts$/,
-            include: path.resolve(__dirname, 'app'),
-            exclude: /node_modules/,
-            use: [{
-                loader: 'angular2-template-loader'
+                test: /\.ts$/,
+                include: path.resolve(__dirname, 'app'),
+                exclude: /node_modules/,
+                use: [{
+                    loader: 'angular2-template-loader'
+                }, {
+                    loader: 'awesome-typescript-loader',
+                    options: {
+                        configFileName: path.resolve(__dirname, './tsconfig.json')
+                    }
+                }]
             }, {
-                loader: 'awesome-typescript-loader',
-                options: {
-                    configFileName: path.resolve(__dirname, './tsconfig.json')
-                }
-            }]
-        }, {
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: 'css-loader?minimize&sourceMap'
-            })
-        }, {
-            test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: 'css-loader?minimize&sourceMap!sass-loader?sourceMap'
-            })
-        }, {
-            test: /\.html$/,
-            use: [{
-                loader: 'html-loader',
-            }],
-        }]
+                // if the file is a css file, consider it is to be integrated in Angular styleUrls.
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [{
+                    loader: 'raw-loader'
+                }],
+            }, {
+                test: /\.css$/,
+                include: /node_modules/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader?minimize&sourceMap'
+                })
+            }, {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader?minimize&sourceMap!sass-loader?sourceMap'
+                })
+            },
+            {
+                test: /\.html$/,
+                use: [{
+                    loader: 'raw-loader',
+                }],
+            }
+        ]
     },
     devtool: 'source-map',
     plugins: [

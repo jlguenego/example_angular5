@@ -6,11 +6,7 @@ import { Component } from '@angular/core';
 <h1>Look at this image</h1>
 <img [src]="niceImageUrl">
 `,
-  styles: [`
-img {
-  width: 400px;
-}
-`],
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   niceImageUrl = '../../assets/chateau.jpg';
