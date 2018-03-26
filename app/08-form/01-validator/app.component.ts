@@ -9,6 +9,7 @@ export class AppComponent {
 
   onSubmit() {
     console.log('submiting the form');
+    alert('Success!');
   }
 
   checkValidity (f) {

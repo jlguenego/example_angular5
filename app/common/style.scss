@@ -1,7 +1,172 @@
 $myColor: red;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto, Arial, sans-serif; // animation: fade-in 2s;
+}
+
+header {
+  margin: 0;
+  padding: 1em;
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(45deg, hsl(240, 100%, 80%), hsl(240, 100%, 90%), hsl(240, 100%, 80%));
+  color: hsl(240, 100%, 10%);
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+section {
+  padding: 0 1em;
+}
 
 h1 {
-  color: $myColor;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+  font-size: 2em;
+  margin-top: 1em;
+  padding: 0 0.5em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 1em;
+  padding: 0 0.5em;
+}
+
+p {
+  margin-top: 0.5em;
+  padding: 0.5em;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  padding: 0 2em;
+  li {
+    padding: 0 1em;
+  }
+}
+
+button {
+  border: 1px solid black;
+  margin-right: 1em;
+  padding: 0.5em 1em;
+  background: white;
+  &:hover {
+    background: hsla(240, 100%, 50%, 0.1);
+  }
+  cursor: pointer;
+  &[disabled] {
+    border: 1px solid hsl(240, 0%, 80%);
+    color: hsl(240, 0%, 80%);
+    &:hover {
+      background: white;
+    }
+  }
+}
+
+label {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1em;
+  span,
+  div {
+    font-weight: bold;
+  }
+}
+
+input {
+  border: 1px solid black;
+  padding: 0.5em 1em;
+  border-radius: 0.1em;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.w10em {
+  display: inline-block;
+  width: 10em;
+}
+
+.w5em {
+  display: inline-block;
+  width: 5em;
+}
+
+.w2em {
+  display: inline-block;
+  width: 2em;
+}
+
+.fs2em {
+  font-size: 2em;
+}
+
+input.ng-valid {
+  background: hsla(120, 100%, 50%, 0.1);
+}
+
+input.ng-invalid {
+  background: hsla(0, 100%, 50%, 0.1);
+}
+
+.output {
+  display: block;
+  background-color: hsl(0, 0, 90%);
+  padding: 1em;
+  font-size: 2em;
+  >.img {
+    text-align: center;
+  }
+}
+
+.critical {
+  background: hsl(0, 100%, 90%);
+  &:hover {
+    background: hsl(0, 100%, 80%);
+  }
+}
+
+.table {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  .row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    div {
+      flex-grow: 1;
+      &.col1 {
+        flex-basis: 10%;
+      }
+      &.col2 {
+        flex-basis: 20%;
+      }
+      &.col3 {
+        flex-basis: 20%;
+      }
+      &.col4 {
+        flex-basis: 1%;
+      }
+      &.col5 {
+        flex-basis: 1%;
+      }
+    }
+  }
+  .row:nth-child(odd) {
+    background: hsl(0, 0%, 95%);
+  }
 }

@@ -1,0 +1,33 @@
+<header>Rest</header>
+<section>
+    <p>
+        <button (click)="retrieveAll()">Retrieve All</button>
+        <button class="critical" (click)="deleteAll()">Delete All</button>
+    </p>
+    <p>
+        <input [(ngModel)]="name">
+        <button (click)="create()">Create</button>
+    </p>
+    <p>
+        <input type="number" [(ngModel)]="id">
+        <button (click)="retrieve()">Retrieve</button>
+    </p>
+
+    <div class="table" *ngIf="resources && resources.content">
+        <div class="row" *ngFor="let resource of resources.content">
+            <div class="col1">{{resource.id}}</div>
+            <div class="col2">{{resource.name}}</div>
+            <div class="col3">
+                <input type="text" [(ngModel)]="resource.newName">
+            </div>
+            <div class="col4">
+                <button (click)="update(resource)">Update</button>
+            </div>
+            <div class="col5">
+                <button (click)="delete(resource)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div>{{resources | json}}</div> -->
+</section>

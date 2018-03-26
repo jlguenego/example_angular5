@@ -3,15 +3,19 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-<h1>Service</h1>
+<header>Service</header>
 <div>
-  <input type="password" [(ngModel)]="myPassword" >
+  <input type="text" [(ngModel)]="myPassword" required>
 </div>
-<div>
 <jlg-password-check [passwordToCheck]="myPassword" ></jlg-password-check>
-
-
 `,
+styles: [
+  `
+  div {
+    padding: 1em;
+  }
+  `
+]
 })
 export class AppComponent {
   myPassword: string = '';

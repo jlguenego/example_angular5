@@ -1,21 +1,26 @@
-<h1>Http</h1>
-<button (click)="onClick()">Click me!</button>
-<br>
-<button (click)="onClick2()">Click me also!</button>
-<br>
-<button (click)="onClick3()">Click me v3!</button>
-<br>
-<button (click)="onClick4()">Click me v4!</button>
-<br>
-<button (click)="onClick5()">Click me v5 (url not found)!</button>
-<br>
-<button [jlg-click]="onClick6.bind(this)">Click me v6 (url randomly failing)!</button>
-<br>
-<button (click)="onClick7()">Get this nice image</button>
-<br>
-<button (click)="onClick8()">Authorization Header</button>
-<br>
-<button (click)="reset()">Reset</button>
-<div>{{message}}</div>
-<div>{{status}}</div>
-<div *ngIf="imageURI" ><img class="castle" [src]="imageURI"> </div>
+<header>Http</header>
+<section>
+    <p>
+        <button (click)="onClick1()">Hello World!</button>
+        <button (click)="onClick2()">Hello World Promise!</button>
+        <button (click)="onClick3()">Hello World Typed Json!</button>
+        <button (click)="onClick4()">Hello World Full Response!</button>
+    </p>
+    <p>
+        <button (click)="onClick5()">URL not found!</button>
+        <button [jlg-click]="onClick6.bind(this)">Url randomly failing!</button>
+    </p>
+    <p>
+        <button (click)="onClick7()">Get this nice image</button>
+        <button (click)="onClick8()">Authorization Header</button>
+    </p>
+    <p>
+        <button (click)="reset()">Reset</button>
+    </p>
+</section>
+<section class="output">
+    <div>Message: {{message}}</div>
+    <div>Status: {{status}}</div>
+    <div class="img" *ngIf="imageURI">
+        <img class="castle" [src]="imageURI"> </div>
+</section>

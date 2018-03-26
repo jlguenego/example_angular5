@@ -25,7 +25,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
-  onClick() {
+  onClick1() {
     this.reset();
     console.log('call the JSON');
     this.http.get('./data.json').subscribe({
@@ -83,6 +83,7 @@ export class AppComponent {
         this.message = data['content'];
       },
       error: e => {
+        console.log('error', e);
         this.message = e;
       }
     });
@@ -124,7 +125,7 @@ export class AppComponent {
 
   onClick8() {
     this.reset();
-    console.log('Getting the image content and expose it.');
+    console.log('Request with special header.');
     this.http.get('../../ws/needs-authorization-header', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

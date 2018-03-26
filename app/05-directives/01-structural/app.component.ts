@@ -3,9 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-<h1>Structural Directive</h1>
-<div *jlgTimes="i">hello</div>
+<header>Structural Directive</header>
+  <div *jlgTimes="i">hello</div>
 `,
+styles: [
+  `
+  div {
+    padding: 0 1em;
+  }
+  `
+]
 })
 export class AppComponent { 
   i = 1;

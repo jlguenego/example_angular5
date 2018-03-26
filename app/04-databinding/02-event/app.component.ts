@@ -3,9 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-<h1>Event Binding</h1>
-<button (click)="myAlert()">Click me!</button>
-`,
+<header>Event Binding</header>
+<div>
+  <button (click)="myAlert()">Click me!</button>
+</div>
+`, styles: [`
+div {
+  text-align: center;
+  font-size: 2em;
+}
+`],
 })
 export class AppComponent {
   myAlert() {
