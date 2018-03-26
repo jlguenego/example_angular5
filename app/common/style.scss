@@ -79,6 +79,15 @@ label {
         font-weight: bold;
         margin-bottom: 0.1em;
     }
+    ul {
+        margin: 0;
+        padding: 0;
+        li {
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+    }
 }
 
 input {
@@ -121,11 +130,13 @@ select {
     font-size: 2em;
 }
 
-input.ng-valid.ng-touched, select.ng-valid.ng-touched {
+input.ng-valid.ng-touched,
+select.ng-valid.ng-touched {
     background: hsla(120, 100%, 50%, 0.1);
 }
 
-input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
     background: hsla(0, 100%, 50%, 0.1);
 }
 
@@ -140,8 +151,12 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
 }
 
 .gray {
-  padding: 1em;
-  background-color: hsl(0, 0, 90%);
+    padding: 1em;
+    background-color: hsl(0, 0, 90%);
+}
+
+.error {
+    color: red;
 }
 
 .critical {

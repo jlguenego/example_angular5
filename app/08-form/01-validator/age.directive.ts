@@ -4,7 +4,7 @@ import { Validator, AbstractControl, ValidatorFn, NG_VALIDATORS } from "@angular
 export function ageValidator(ageMax?: number): ValidatorFn {
     ageMax = ageMax || 100;
     return (control: AbstractControl): { [key: string]: any } => {
-        const forbidden = isNaN(control.value) || +control.value >= ageMax;
+        const forbidden = +control.value >= ageMax;
         const result = forbidden ? { 'forbiddenAge': { value: control.value } } : null;
         console.log('result', result);
         return result;

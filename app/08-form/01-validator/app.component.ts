@@ -29,7 +29,7 @@ export class AppComponent {
   }
 
   checkValidity(f) {
-    // console.log('f', f);
+    console.log('f', f);
     return f.invalid;
   }
 
