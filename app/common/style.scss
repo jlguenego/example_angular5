@@ -121,11 +121,11 @@ select {
     font-size: 2em;
 }
 
-input.ng-valid, select.ng-valid {
+input.ng-valid.ng-touched, select.ng-valid.ng-touched {
     background: hsla(120, 100%, 50%, 0.1);
 }
 
-input.ng-invalid, select.ng-invalid {
+input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
     background: hsla(0, 100%, 50%, 0.1);
 }
 
