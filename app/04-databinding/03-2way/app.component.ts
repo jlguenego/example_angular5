@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
 <h1>2 ways binding</h1>
 <input [(ngModel)]="myName">
+<input [(ngModel)]="myName">
 {{myName}}
 `,
 })
