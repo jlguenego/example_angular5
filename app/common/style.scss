@@ -1,7 +1,36 @@
 $myColor: red;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+}
 
 h1 {
-  color: $myColor;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+  margin: 0;
+  padding: 1em;
+  text-align: center;
+  background: linear-gradient(45deg, hsl(240, 100%, 80%), hsl(240, 100%, 90%), hsl(240, 100%, 80%));
+  color: hsl(240, 100%, 10%);
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+p {
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  padding: 0 2em;
+  li {
+    padding: 0 1em;
+  }
 }
