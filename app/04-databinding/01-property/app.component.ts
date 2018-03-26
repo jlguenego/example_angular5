@@ -4,11 +4,17 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
 <h1>Look at this image</h1>
-<img [src]="niceImageUrl">
+<div>
+  <img [src]="niceImageUrl">
+</div>
 `,
   styles: [`
 img {
   width: 400px;
+  animation: fade-in 5s;
+}
+div {
+  text-align: center;
 }
 `],
 })
