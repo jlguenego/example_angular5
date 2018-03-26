@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-<h1>Structural Directive</h1>
+<header>Structural Directive</header>
   <div *jlgTimes="i">hello</div>
 `,
 styles: [

@@ -10,7 +10,7 @@ import { RestService, RestResponse } from './rest.service';
 @Component({
   selector: 'my-app',
   template: `
-<h1>Rest</h1>
+<header>Rest</header>
 <button (click)="retrieveAll()">Retrieve All</button><br>
 <button (click)="deleteAll()">Delete All</button><br>
 <input [(ngModel)]="name">

@@ -19,6 +19,8 @@ export class JLGDraggableDirective {
     style.position = 'relative';
     style.border = '1px solid red';
     style.cursor = 'move';
+    style.padding = '1em';
+    style.margin = '1em 0.5em';
     if (this.doesHighlight) {
       style.backgroundColor = this.color;
     }

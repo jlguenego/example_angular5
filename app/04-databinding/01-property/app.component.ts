@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-<h1>Look at this image</h1>
+<header>Look at this image</header>
 <div>
   <img [src]="niceImageUrl">
 </div>

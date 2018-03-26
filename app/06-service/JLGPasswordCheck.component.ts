@@ -4,11 +4,11 @@ import { JLGPasswordCheckerService, PasswordRule } from './JLGPasswordChecker.se
 @Component({
   selector: 'jlg-password-check',
   template: `
-  <div>
-  <h2>password check</h2>
-  <div *ngFor="let rule of rules" [ngStyle]="{'text-decoration': rule.verified ? 'none': 'line-through'}">{{rule.label}}</div>
-  </div>
-
+  
+  <h2>Password check</h2>
+  <ul>
+  <li *ngFor="let rule of rules" [ngStyle]="{'text-decoration': rule.verified ? 'none': 'line-through'}">{{rule.label}}</li>
+  </ul>
 `,
   providers: [JLGPasswordCheckerService],
 })

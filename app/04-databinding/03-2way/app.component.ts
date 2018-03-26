@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-<h1>2 ways binding</h1>
+<header>2 ways binding</header>
 <input [(ngModel)]="myName">
 <input [(ngModel)]="myName">
 {{myName}}

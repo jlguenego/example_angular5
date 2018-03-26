@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
 <span>
-<h1>Interpolation binding</h1>
+<header>Interpolation binding</header>
 <p style="font-size: 4em;">
 {{myName}}
 </p>

@@ -11,10 +11,11 @@ body {
   font-family: Roboto, Arial, sans-serif; // animation: fade-in 2s;
 }
 
-h1 {
+header {
   margin: 0;
   padding: 1em;
   text-align: center;
+  font-weight: bold;
   background: linear-gradient(45deg, hsl(240, 100%, 80%), hsl(240, 100%, 90%), hsl(240, 100%, 80%));
   color: hsl(240, 100%, 10%);
   font-size: 2em;
@@ -24,11 +25,11 @@ h1 {
 h2 {
   font-size: 1.5em;
   margin-top: 1em;
-  padding: 0.5em;
+  padding: 0 0.5em;
 }
 
 p {
-  margin-top: 1em;
+  margin-top: 0.5em;
   padding: 0.5em;
 }
 
@@ -78,4 +79,12 @@ button {
 
 .fs2em {
   font-size: 2em;
+}
+
+input.ng-valid {
+  background: hsla(120, 100%, 50%, 0.1);
+}
+
+input.ng-invalid {
+  background: hsla(0, 100%, 50%, 0.1);
 }
