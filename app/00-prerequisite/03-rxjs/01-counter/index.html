@@ -5,16 +5,28 @@
     <title>RxJS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../wpk/vendor.css">
+    <link rel="stylesheet" href="../../../wpk/01-bundle.css">
 </head>
 
 <body>
-    <h1>Counter: Vanilla vs RxJS</h1>
-    <button id="incrCounterBtn">Increment counter</button><br>
-    <span id="counterTxt"></span>
-    <span id="counter2Txt"></span>
-    <span id="counter3Txt"></span>
+    <h1>RxJS: Counter</h1>
+    <p>
+        Here are three identical counters:
+    </p>
+    <ul>
+        <li>First one is written with Vanilla JS</li>
+        <li>Second one is written with RxJS with a lot of console.log</li>
+        <li>Third one is written with RxJS without console.log</li>
+    </ul>
+    <p class="fs2em">
+        <button id="incrCounterBtn">Increment counter</button>
+        <span class="w5em">&nbsp;</span>
+        <span class="w2em" id="counterTxt"></span>
+        <span class="w2em" id="counter2Txt"></span>
+        <span class="w2em" id="counter3Txt"></span>
 
-    
+    </p>
     <script src="../../../../node_modules/rxjs/bundles/Rx.js"></script>
     <script src="main.js"></script>
 </body>
