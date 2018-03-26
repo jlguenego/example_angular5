@@ -139,6 +139,11 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
     }
 }
 
+.gray {
+  padding: 1em;
+  background-color: hsl(0, 0, 90%);
+}
+
 .critical {
     background: hsl(0, 100%, 90%);
     &:hover {
