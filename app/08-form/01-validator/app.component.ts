@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get(url).subscribe({
+    this.http.get(url).delay(2000).subscribe({
       next: data => {
         this.regions = Object.keys(data['regions']);
       },
