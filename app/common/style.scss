@@ -61,6 +61,29 @@ button {
     background: hsla(240, 100%, 50%, 0.1);
   }
   cursor: pointer;
+  &[disabled] {
+    border: 1px solid hsl(240, 0%, 80%);
+    color: hsl(240, 0%, 80%);
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+label {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1em;
+  span,
+  div {
+    font-weight: bold;
+  }
+}
+
+input {
+  border: 1px solid black;
+  padding: 0.3em;
+  border-radius: 0.1em;
 }
 
 @keyframes fade-in {
