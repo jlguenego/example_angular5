@@ -4,8 +4,15 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
 <h1>Event Binding</h1>
-<button (click)="myAlert()">Click me!</button>
-`,
+<div>
+  <button (click)="myAlert()">Click me!</button>
+</div>
+`, styles: [`
+div {
+  text-align: center;
+  font-size: 2em;
+}
+`],
 })
 export class AppComponent {
   myAlert() {
