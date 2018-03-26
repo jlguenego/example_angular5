@@ -15,6 +15,16 @@
             </div>
             <div>{{error}}</div>
         </label>
+        <label>
+            <div>Region</div>
+            <div>
+                <select required>
+                    <option value="" disabled selected>Select your option</option>
+                    <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+                </select>
+            </div>
+            <div>{{error}}</div>
+        </label>
         <button [disabled]="checkValidity(f)">Submit</button>
     </form>
 </section>
