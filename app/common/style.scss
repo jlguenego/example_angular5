@@ -82,7 +82,7 @@ label {
 
 input {
   border: 1px solid black;
-  padding: 0.3em;
+  padding: 0.5em 1em;
   border-radius: 0.1em;
 }
 
@@ -129,5 +129,28 @@ input.ng-invalid {
   font-size: 2em;
   >.img {
     text-align: center;
+  }
+}
+
+.critical {
+  background: hsl(0, 100%, 90%);
+  &:hover {
+    background: hsl(0, 100%, 80%);
+  }
+}
+
+.table {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  .row {
+    display: flex;
+    flex-flow: row nowrap;
+    div {
+      flex-grow: 1;
+      &.col1 {
+        flex-basis: 10%;
+      }
+    }
   }
 }

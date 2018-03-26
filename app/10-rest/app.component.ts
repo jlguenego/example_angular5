@@ -9,19 +9,7 @@ import { RestService, RestResponse } from './rest.service';
 
 @Component({
   selector: 'my-app',
-  template: `
-<header>Rest</header>
-<button (click)="retrieveAll()">Retrieve All</button><br>
-<button (click)="deleteAll()">Delete All</button><br>
-<input [(ngModel)]="name">
-<button (click)="create()">Create</button><br>
-<input type="number" [(ngModel)]="id">
-<button (click)="retrieve()">Retrieve</button>
-<button (click)="update()">Update</button><br>
-<button (click)="delete()">Delete</button><br>
-
-<div>{{resources | json}}</div>
-`,
+  templateUrl: './app.component.html',
   providers: [
     RestService
   ]
@@ -41,7 +29,7 @@ export class AppComponent {
 
   retrieveAll() {
     console.log('retrieveAll', this.resourceName);
-    this.rest.retrieveAll(this.resourceName)
+    return this.rest.retrieveAll(this.resourceName)
       .then(resources => this.resources = resources)
       .catch(error => console.error('error', error));
   }
@@ -70,20 +58,20 @@ export class AppComponent {
       .catch(error => console.error('error', error));
   }
 
-  update() {
+  update(resource) {
     console.log('update', this.resourceName);
     const object = {
-      name: this.name,
+      name: resource.newName,
     }
-    this.rest.update(this.resourceName, this.id, object)
-      .then(resource => this.resources = resource)
+    this.rest.update(this.resourceName, resource.id, object)
+      .then(() => this.retrieveAll())
       .catch(error => console.error('error', error));
   }
 
-  delete() {
+  delete(resource) {
     console.log('delete', this.resourceName);
-    this.rest.delete(this.resourceName, this.id)
-      .then(resource => this.resources = resource)
+    this.rest.delete(this.resourceName, resource.id)
+      .then(() => this.retrieveAll())
       .catch(error => console.error('error', error));
   }
 
