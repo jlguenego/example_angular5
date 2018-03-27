@@ -17,9 +17,9 @@ export class AppComponent {
 
 
   f = new FormGroup({
-    firstname: new FormControl('', [Validators.required]);
-    age: new FormControl('', [Validators.required, ageValidator(80)]);
-    region: new FormControl('', [Validators.required]);
+    firstname: new FormControl('', [Validators.required]),
+    age: new FormControl('', [Validators.required, ageValidator(80)]),
+    region: new FormControl('', [Validators.required]),
   });
 
   constructor(private regionService: RegionService) { }
