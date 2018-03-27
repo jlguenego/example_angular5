@@ -1,0 +1,8 @@
+img {
+    width: 400px;
+    animation: fade-in 5s;
+}
+
+div {
+    text-align: center;
+}

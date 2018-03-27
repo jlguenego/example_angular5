@@ -1,7 +1,7 @@
 {
     "apps": [{
         "appRoot": ".",
-        "root": "app/11-decorators/01-input",
+        "root": "app/11-decorators/02-output",
         "prefix": "your-prefix"
     }],
     "defaults": {

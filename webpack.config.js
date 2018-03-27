@@ -45,19 +45,32 @@ const config = {
             }, {
                 // if the file is a css file, consider it is to be integrated in Angular styleUrls.
                 test: /\.css$/,
-                exclude: /node_modules/,
+                exclude: [/node_modules/, /app[/\\]common/],
                 use: [{
                     loader: 'raw-loader'
                 }],
             }, {
+                // if the file is a css file, consider it is to be integrated in Angular styleUrls.
+                test: /\.scss$/,
+                exclude: [/node_modules/, /app[/\\]common/],
+                use: [{
+                    loader: 'raw-loader'
+                }, {
+                    loader: 'sass-loader',
+                    options: {
+                        sourceMap: true,
+                    }
+                }],
+            }, {
                 test: /\.css$/,
-                include: /node_modules/,
+                include: [/node_modules/, /app[/\\]common/],
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader?minimize&sourceMap'
                 })
             }, {
                 test: /\.scss$/,
+                include: [/node_modules/, /app[/\\]common/],
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader?minimize&sourceMap!sass-loader?sourceMap'
