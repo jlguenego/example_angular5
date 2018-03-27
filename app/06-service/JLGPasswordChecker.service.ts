@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 export interface PasswordRule {
   verified: boolean,
   label: string,
-  rule: (password: string) => boolean,
+  check: (password: string) => boolean,
 }
 
 
@@ -18,25 +18,25 @@ export class JLGPasswordCheckerService {
     const lengthRule: PasswordRule = {
       verified: false,
       label: 'length must be at least 8 characters',
-      rule: password => password.length >= 8,
+      check: password => password.length >= 8,
     };
 
     const atLeastOneUpperRule: PasswordRule = {
       verified: false,
       label: 'at least one uppercase letter',
-      rule: password => /[A-Z]/.test(password),
+      check: password => /[A-Z]/.test(password),
     };
 
     const atLeastOneLowerRule: PasswordRule = {
       verified: false,
       label: 'at least one lowercase letter',
-      rule: password => /[a-z]/.test(password),
+      check: password => /[a-z]/.test(password),
     };
 
     const atLeastOneDigitRule: PasswordRule = {
       verified: false,
       label: 'at least one digit',
-      rule: password => /[0-9]/.test(password),
+      check: password => /[0-9]/.test(password),
     };
 
     const myPasswordRuleSet: PasswordRule[] = [
@@ -47,7 +47,7 @@ export class JLGPasswordCheckerService {
     ];
 
     myPasswordRuleSet.forEach(rule => {
-      rule.verified = rule.rule(password);
+      rule.verified = rule.check(password);
     });
     return myPasswordRuleSet;
   }
