@@ -20,7 +20,7 @@ export class HelloComponent implements OnInit {
     // console.log(err.stack);
     return this._city;
   }
-  _city: string;
+  private _city: string;
 
   constructor() { }
 
