@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Person } from './person';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { RegionService } from './region.service';
 import { ageValidator } from '../01-template-driven/age.directive';
 
@@ -14,9 +14,13 @@ export class AppComponent {
 
   person: Person = new Person();
 
-  firstname = new FormControl('', [Validators.required]);
-  age = new FormControl('', [Validators.required, ageValidator(80)]);
-  region = new FormControl('', [Validators.required]);
+
+
+  f = new FormGroup({
+    firstname: new FormControl('', [Validators.required]);
+    age: new FormControl('', [Validators.required, ageValidator(80)]);
+    region: new FormControl('', [Validators.required]);
+  });
 
   constructor(private regionService: RegionService) { }
 

@@ -9,7 +9,6 @@ export function ageValidator(ageMax?: number): ValidatorFn {
         }
         const forbidden = +control.value >= ageMax;
         const result = forbidden ? { 'forbiddenAge': { value: control.value } } : null;
-        console.log('result', result);
         return result;
     };
 }
