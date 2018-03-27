@@ -1,0 +1,40 @@
+<header>Forms</header>
+<section *ngIf="beforeSubmit">
+    <div>
+        <label>
+            <div>Firstname</div>
+            <div>
+                <input [formControl]="firstname">
+            </div>
+            <ul *ngIf="firstname && firstname.touched && firstname.invalid">
+                <li class="error" *ngIf="firstname.errors.required">Firstname is required.</li>
+            </ul>
+        </label>
+        <label>
+            <div>Age</div>
+            <div>
+                <input [formControl]="age">
+            </div>
+            <ul *ngIf="age && age.touched && age.invalid">
+                <li class="error" *ngIf="age.errors.forbiddenAge">Hey, you cannot be that old!</li>
+                <li class="error" *ngIf="age.errors.number">Age must be a valid number.</li>
+                <li class="error" *ngIf="age.errors.required">Age is required.</li>
+            </ul>
+        </label>
+        <label>
+            <div>Region</div>
+            <div>
+                <select [formControl]="region">
+                    <option *ngFor="let r of regionService.regions" [value]="r">{{r}}</option>
+                </select>
+            </div>
+            <ul *ngIf="region && region.touched && region.invalid">
+                <li class="error" *ngIf="region.errors.required">Choose a region.</li>
+            </ul>
+        </label>
+    </div>
+</section>
+<section *ngIf="!beforeSubmit">
+    Form sucessfully submitted.
+    <button (click)="goBack()">Back</button>
+</section>

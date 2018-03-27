@@ -1,7 +1,7 @@
 {
     "apps": [{
         "appRoot": ".",
-        "root": "app/11-decorators/02-output",
+        "root": "app/08-form/02-reactive",
         "prefix": "your-prefix"
     }],
     "defaults": {
