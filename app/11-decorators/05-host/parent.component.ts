@@ -9,6 +9,8 @@ import { JLGService, JLGParentService } from './jlg.service';
 <span>I am the parent</span>
 <ng-content></ng-content>
 `,
+// try with viewProviders: it give no access to children !
+  // viewProviders: [
   providers: [
     { provide: JLGService, useClass: JLGParentService }
   ],
