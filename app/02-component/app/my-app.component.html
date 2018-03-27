@@ -1,2 +1,6 @@
 <header>Component</header>
-<child></child>
+
+<child [message]="message"></child>
+<div *ngIf="on">
+    <child bind-message="message"></child>
+</div>
