@@ -1,7 +1,7 @@
 {
     "apps": [{
         "appRoot": ".",
-        "root": "app/11-decorators/03-hostlistener",
+        "root": "app/11-decorators/05-host",
         "prefix": "your-prefix"
     }],
     "defaults": {
