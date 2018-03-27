@@ -1,7 +1,7 @@
 {
     "apps": [{
         "appRoot": ".",
-        "root": "app/common/JLGModule",
+        "root": "app/11-decorators/01-input",
         "prefix": "your-prefix"
     }],
     "defaults": {
