@@ -1,7 +1,7 @@
 {
     "apps": [{
         "appRoot": ".",
-        "root": "app/08-form/02-reactive",
+        "root": "app/11-decorators/03-hostlistener",
         "prefix": "your-prefix"
     }],
     "defaults": {
