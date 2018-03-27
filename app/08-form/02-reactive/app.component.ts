@@ -12,7 +12,7 @@ import { ageValidator } from '../01-template-driven/age.directive';
 export class AppComponent {
   beforeSubmit: boolean = true;
 
-  person: Person = new Person('Jean-Louis', 43, 'lorraine');
+  person: Person = new Person('Jean-Louis', 432, 'lorraine');
 
   f: FormGroup;
 
