@@ -1,5 +1,6 @@
 export class Person {
-    firstname: string = '';
-    region: string = undefined;
-    age: number;
+
+    constructor(public firstname?: string, public age?:number, public region?: string) {
+
+    }
 }

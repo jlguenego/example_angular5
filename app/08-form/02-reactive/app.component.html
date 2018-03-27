@@ -1,6 +1,6 @@
-<header>Forms</header>
+<header>Reactive Form</header>
 <section *ngIf="beforeSubmit">
-    <form [formGroup]="f">
+    <form [formGroup]="f" (ngSubmit)="onSubmit()">
         <label>
             <div>Firstname</div>
             <div>
@@ -32,7 +32,12 @@
                 <li class="error" *ngIf="f.controls.region.errors.required">Choose a region.</li>
             </ul>
         </label>
+        <button (click)="reset()">Reset</button>
+        <button type="submit" [disabled]="f.invalid">Submit</button>
     </form>
+    
+    <p>Form value: {{ f.value | json }}</p>
+    <p>Form status: {{ f.status | json }}</p>
 </section>
 <section *ngIf="!beforeSubmit">
     Form sucessfully submitted.

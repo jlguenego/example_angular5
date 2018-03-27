@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Person } from './person';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { RegionService } from './region.service';
 import { ageValidator } from '../01-template-driven/age.directive';
 
@@ -12,23 +12,33 @@ import { ageValidator } from '../01-template-driven/age.directive';
 export class AppComponent {
   beforeSubmit: boolean = true;
 
-  person: Person = new Person();
+  person: Person = new Person('Jean-Louis', 43, 'lorraine');
 
+  f: FormGroup;
 
+  constructor(private fb: FormBuilder, private regionService: RegionService) {
+    this.createForm();
+    this.reset();
+  }
 
-  f = new FormGroup({
-    firstname: new FormControl('', [Validators.required]),
-    age: new FormControl('', [Validators.required, ageValidator(80)]),
-    region: new FormControl('', [Validators.required]),
-  });
+  createForm() {
+    this.f = this.fb.group({
+      firstname: new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.required, ageValidator(80)]),
+      region: new FormControl('', [Validators.required]),
+    });
+  }
 
-  constructor(private regionService: RegionService) { }
+  reset() {
+    this.f.reset();
+    this.f.setValue(this.person);
+  }
 
   onSubmit() {
     console.log('submiting the form');
-    this.person.firstname = '';
-    this.person.region = '';
-    this.person.age = undefined;
+    // in one line, modify the three attributes of person.
+    Object.assign(this.person, this.f.value);
+    console.log('person', this.person);
     this.beforeSubmit = false;
   }
 
