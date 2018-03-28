@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 <header>Event Binding</header>
 <div>
   <button (click)="myAlert()">Click me!</button>
+  <button on-click="myAlert()">Click me!</button>
 </div>
 `, styles: [`
 div {
