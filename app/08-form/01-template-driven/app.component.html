@@ -13,7 +13,7 @@
         <label>
             <div>Age</div>
             <div>
-                <input type="text" name="age" [(ngModel)]="age" required age="90">
+                <input type="text" name="age" [(ngModel)]="age" required age="110">
             </div>
             <ul *ngIf="f.controls.age && f.controls.age.touched && f.controls.age.invalid">
                 <li class="error" *ngIf="f.controls.age.errors.forbiddenAge">Hey, you cannot be that old!</li>
