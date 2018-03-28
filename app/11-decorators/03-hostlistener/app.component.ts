@@ -8,7 +8,7 @@ interface HelloEvent {
 @Component({
   selector: 'my-app',
   template: `
-<header>Hostlistener</header>
+<header>HostListener</header>
 Message: {{message}}
 `,
 })
