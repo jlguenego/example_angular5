@@ -1,5 +1,4 @@
-import { Component, Host, Optional } from '@angular/core';
-import { JLGService, JLGChildService } from './jlg.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'child',
@@ -8,18 +7,7 @@ import { JLGService, JLGChildService } from './jlg.service';
 I am the child.
 </div>
 `,
-  providers: [
-    // { provide: JLGService, useClass: JLGChildService }
-  ],
 })
 export class ChildComponent {
 
-  // @Host is like @Self but will never go to look for the service on the module providers.
-  constructor(
-    @Host()
-    @Optional()
-  
-  private jlg: JLGService) {
-    console.log('JLGService', jlg);
-  }
 }

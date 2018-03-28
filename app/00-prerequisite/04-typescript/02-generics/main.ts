@@ -8,6 +8,9 @@ identity(a);
 let b = 'coucou';
 identity(b);
 
+const c: Array<number | string> = [1, 2, 3, 'coucou'];
+console.log('c', c);
+
 function logLength<T>(array: T[]): void {
     console.log('array length', array.length);
 }

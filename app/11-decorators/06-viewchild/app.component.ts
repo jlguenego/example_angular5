@@ -1,24 +1,14 @@
 import { Component } from '@angular/core';
-import { JLGService } from './jlg.service';
-
-
 
 @Component({
   selector: 'my-app',
   template: `
-<header>Host</header>
-Parent: 
-<parent>
+<header>@ViewChild, @ViewChildren, @ContentChild, @ContentChildren</header>
+Host: 
+<host>
   <child></child>
-</parent>
+</host>
 `,
 })
 export class AppComponent {
-  constructor() {
-
-  }
-
-
-
-
 }
