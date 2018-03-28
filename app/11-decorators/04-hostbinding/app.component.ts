@@ -9,7 +9,7 @@ interface HelloEvent {
 @Component({
   selector: 'my-app',
   template: `
-<header>Hostlistener</header>
+<header>HostBinding</header>
 <span>Look I am changing my color...</span>
 
 `,
