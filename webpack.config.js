@@ -44,6 +44,13 @@ const config = {
                     }
                 }]
             }, {
+                test: /\.js$/,
+                include: path.resolve(__dirname, 'app/13-migration/01-angularjs'),
+                exclude: /node_modules/,
+                use: [{
+                    loader: 'babel-loader'
+                }]
+            }, {
                 // if the file is a css file, consider it is to be integrated in Angular styleUrls.
                 test: /\.css$/,
                 exclude: cssExtractTextArray,
