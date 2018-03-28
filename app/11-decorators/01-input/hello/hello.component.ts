@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './hello.component.html',
   styleUrls: ['./hello.component.css'],
 })
-export class HelloComponent implements OnInit {
+export class HelloComponent {
 
   @Input('first-name') firstName: string;
   @Input() lastName: string;

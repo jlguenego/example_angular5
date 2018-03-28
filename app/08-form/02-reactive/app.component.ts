@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Person } from './person';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { RegionService } from './region.service';
-import { ageValidator } from '../01-template-driven/age.directive';
+import { ageValidator } from '@jlg-example-angular-common/JLGModule/age.directive';
 
 
 @Component({
