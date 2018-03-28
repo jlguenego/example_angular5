@@ -9,6 +9,7 @@ const {
     TsConfigPathsPlugin
 } = require('awesome-typescript-loader');
 
+const cssExtractTextArray = [/node_modules/, /app[/\\]common/, path.resolve(__dirname, 'app/13-migration/01-angularjs')];
 
 // const {
 //     BundleAnalyzerPlugin
@@ -45,14 +46,14 @@ const config = {
             }, {
                 // if the file is a css file, consider it is to be integrated in Angular styleUrls.
                 test: /\.css$/,
-                exclude: [/node_modules/, /app[/\\]common/],
+                exclude: cssExtractTextArray,
                 use: [{
                     loader: 'raw-loader'
                 }],
             }, {
                 // if the file is a css file, consider it is to be integrated in Angular styleUrls.
                 test: /\.scss$/,
-                exclude: [/node_modules/, /app[/\\]common/],
+                exclude: cssExtractTextArray,
                 use: [{
                     loader: 'raw-loader'
                 }, {
@@ -63,14 +64,14 @@ const config = {
                 }],
             }, {
                 test: /\.css$/,
-                include: [/node_modules/, /app[/\\]common/],
+                include: cssExtractTextArray,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader?minimize&sourceMap'
                 })
             }, {
                 test: /\.scss$/,
-                include: [/node_modules/, /app[/\\]common/],
+                include: cssExtractTextArray,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader?minimize&sourceMap!sass-loader?sourceMap'
