@@ -9,12 +9,13 @@
             this.privateTiti = value;
         },
         get titi() {
+            console.log('getting titi =', this.privateTiti);
             return this.privateTiti;
         }
     };
 
     obj.titi = 5;
     console.log('obj.titi', obj.titi);
-   
+
 
 })();

@@ -10,7 +10,7 @@ export class HelloComponent implements OnInit {
   @Input('first-name') firstName: string;
   @Input() lastName: string;
   @Input() set city(value: string) {
-    console.log('about to set the city to ', value);
+    console.log('about to set the city to', value);
     this._city = value;
   };
 
@@ -21,10 +21,4 @@ export class HelloComponent implements OnInit {
     return this._city;
   }
   private _city: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
