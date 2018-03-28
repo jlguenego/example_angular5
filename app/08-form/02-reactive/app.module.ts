@@ -5,10 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegionService } from './region.service';
-import { JLGModule } from '@jlg-example-angular-common/JLGModule/JLG.module';
 
 @NgModule({
-  imports: [BrowserModule, ReactiveFormsModule, HttpClientModule, JLGModule],
+  imports: [BrowserModule, ReactiveFormsModule, HttpClientModule],
   declarations: [AppComponent],
   providers: [RegionService],
   bootstrap: [AppComponent]
