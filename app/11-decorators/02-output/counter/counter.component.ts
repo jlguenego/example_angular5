@@ -12,8 +12,6 @@ export interface CounterData {
 })
 export class CounterComponent {
 
-  constructor() { }
-
   @Input() name: string;
 
   myCount: number = 0;
