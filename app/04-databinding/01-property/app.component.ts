@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 <header>Look at this image</header>
 <div>
   <img [src]="niceImageUrl">
+  <img bind-src="niceImageUrl">
 </div>
 `,
   styleUrls: ['./app.component.css'],

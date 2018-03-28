@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
 <header>2 ways binding</header>
 <input [(ngModel)]="myName">
-<input [(ngModel)]="myName">
+<input bindon-ngModel="myName">
 {{myName}}
 `,
 })
