@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AgeValidatorDirective } from '@jlg-example-angular-common/JLGModule/age.directive';
+import { JLGModule } from '@jlg-example-angular-common/JLGModule/JLG.module';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpClientModule],
-  declarations: [AppComponent, AgeValidatorDirective],
+  imports: [BrowserModule, FormsModule, HttpClientModule, JLGModule],
+  declarations: [AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
