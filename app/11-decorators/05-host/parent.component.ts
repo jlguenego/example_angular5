@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { JLGService, JLGParentService } from './jlg.service';
 
-
-
 @Component({
   selector: 'parent',
   template: `
