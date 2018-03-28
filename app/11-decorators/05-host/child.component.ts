@@ -9,36 +9,40 @@ I am the child.
 </div>
 `,
   providers: [
-    // { provide: JLGService, useClass: JLGChildService }
+    { provide: JLGService, useClass: JLGChildService }
   ],
 })
 export class ChildComponent {
 
+  // Host is the component which uses <ng-content>.
+  // Note: the host word is chosen beacause it reminds us the scoped CSS.
+
+  // By default, precedence is this, host, parent, module.
+
   // @Host will never get the module service
-  // @Host will get the host component service. host component is never parent component.
-  // Host component is the component that owns <ng-content> which this component resides in (is projected in).
-  // you have to see "host" like the ":host" in Scoped CSS
+  // @Host precedence: this, host.
 
   // @Self will get only this component service, defined in this component.
 
-  // @SkipSelf will not get this component service, 
+  // @SkipSelf will not get this component service,
+  // SkipSelf precedence: host, parent, module. 
   // so he will get the parent component service, or host component service, then module service
-  
+
   constructor(
 
     @Host()
     @Optional()
-    private jlg: JLGService,
+    private jlg1: JLGService,
 
-    @Self() 
+    @Self()
     @Optional()
     private jlg2: JLGService,
 
-    @SkipSelf() 
+    @SkipSelf()
     @Optional()
     private jlg3: JLGService,
   ) {
-    console.log('jlg host', jlg);
+    console.log('jlg host', jlg1);
     console.log('jlg self', jlg2);
     console.log('jlg skipself', jlg3);
   }

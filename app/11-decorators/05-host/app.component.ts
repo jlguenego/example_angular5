@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JLGService } from './jlg.service';
+import { JLGService, JLGAppService } from './jlg.service';
 
 
 
@@ -7,18 +7,14 @@ import { JLGService } from './jlg.service';
   selector: 'my-app',
   template: `
 <header>Host</header>
-Parent: 
-<parent>
+Host: 
+<host>
   <child></child>
-</parent>
+</host>
 `,
+  providers: [
+    { provide: JLGService, useClass: JLGAppService }
+  ],
 })
 export class AppComponent {
-  constructor() {
-
-  }
-
-
-
-
 }

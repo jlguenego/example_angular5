@@ -27,7 +27,7 @@ export class JLGModuleService implements JLGService {
 }
 
 @Injectable()
-export class JLGParentService implements JLGService {
+export class JLGHostService implements JLGService {
 
   constructor() {
     console.log('JLGParentService: constructor');
@@ -51,3 +51,17 @@ export class JLGChildService implements JLGService {
   }
 
 }
+
+@Injectable()
+export class JLGAppService implements JLGService {
+
+  constructor() {
+    console.log('JLGAppService: constructor');
+  }
+
+  doSomething() {
+    console.log('JLGAppService: do something even better');
+  }
+
+}
+

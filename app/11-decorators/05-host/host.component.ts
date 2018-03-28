@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { JLGService, JLGParentService } from './jlg.service';
+import { JLGService, JLGHostService } from './jlg.service';
 
 @Component({
-  selector: 'parent',
+  selector: 'host',
   template: `
-<span>I am the parent</span>
+<span>I am the Host</span>
 <ng-content></ng-content>
 `,
 // try with viewProviders: it give no access to children !
   // viewProviders: [
   providers: [
-    { provide: JLGService, useClass: JLGParentService }
+    { provide: JLGService, useClass: JLGHostService }
   ],
 })
-export class ParentComponent {
+export class HostComponent {
  
 }
