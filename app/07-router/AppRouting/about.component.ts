@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'about-view',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
 <h1>About</h1>
 <section>
   <address>
-    <br> JLG Consulting
+    <br> {{title}}
     <br> 99 rue de Paris 
     <br> Batiment A, 1er étage 
     <br> 77200 TORCY
@@ -18,5 +19,8 @@ import { Component } from '@angular/core';
 `,
 })
 export class AboutComponent {
-
+  title: string;
+  constructor(private route: ActivatedRoute) {
+    route.data.map(p => p.title).subscribe(title => this.title = title);
+  }
 }

@@ -8,7 +8,11 @@ import { AboutComponent } from './about.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'product/:id', component: ProductComponent },
-  { path: 'about', component: AboutComponent },
+  {
+    path: 'about', component: AboutComponent, data: {
+      title: 'JLG Consulting',
+    }
+  },
   { path: '**', redirectTo: '/' }
 ];
 
