@@ -7,6 +7,10 @@ header {
       color: black;
       padding: 0 1em;
       height: 100%;
+
+      &.active {
+        border: 1px solid black;
+      }
     }
   }
 }

@@ -6,13 +6,14 @@ import './app.component.scss';
   template: `
   <header>
     <nav>
-    <a routerLink="/">Home</a>
-    <a routerLink="/product/5">Product#5</a>
-    <a routerLink="/about">About</a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/product/5" routerLinkActive="active">Product#5</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
     </nav>
   </header>
   <router-outlet></router-outlet>
 `,
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
 
