@@ -15,5 +15,8 @@ import footerHtml from './tmpl/footer.html';
 
     app.component('jlgFooter', {
         template: footerHtml,
+        controller: function () {
+            this.now = new Date().getFullYear();
+        },
     });
 })();

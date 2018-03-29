@@ -6,10 +6,9 @@
     box-sizing: border-box;
 }
 
-h1 {
-    padding: 20px;
+header {
     background: linear-gradient(45deg, hsl(240, 100%, 80%), hsl(180, 100%, 80%), hsl(240, 100%, 80%));
-    text-align: center;
+    font-size: 2em;
 }
 
 p {
@@ -39,4 +38,19 @@ button {
     &:disabled {
         opacity: 0.3;
     }
+}
+
+fieldset {
+    border: 1px solid black;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid grey;
+}
+
+footer,
+header {
+    padding: 1em;
+    text-align: center;
 }
