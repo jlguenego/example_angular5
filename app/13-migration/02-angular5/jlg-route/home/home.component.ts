@@ -51,10 +51,11 @@ export class HomeComponent {
       .catch(error => console.error('error', error));
   }
 
-  delete(): Promise<any> {
-    return Promise.resolve().then(() => {
-      console.log('coucou');
-    });
+  delete(id): Promise<any> {
+    console.log('delete', this.resourceName);
+    return this.rest.delete(this.resourceName, id)
+      .then(() => this.query())
+      .catch(error => console.error('error', error));
   }
 
   query(): Promise<any> {
