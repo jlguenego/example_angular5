@@ -25,9 +25,11 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BodyComponent } from './body/body.component';
+import { CommonModule } from '@angular/common';
+import { JLGRouteModule } from '../jlg-route/jlg-route.module';
 
 @NgModule({
-    imports: [],
+    imports: [CommonModule, JLGRouteModule],
     declarations: [HeaderComponent, FooterComponent, BodyComponent],
     providers: [
 
