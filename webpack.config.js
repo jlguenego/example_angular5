@@ -9,7 +9,12 @@ const {
     TsConfigPathsPlugin
 } = require('awesome-typescript-loader');
 
-const cssExtractTextArray = [/node_modules/, /app[/\\]common/, path.resolve(__dirname, 'app/13-migration/01-angularjs')];
+const cssExtractTextArray = [
+    /node_modules/, 
+    /app[/\\]common/, 
+    path.resolve(__dirname, 'app/13-migration/01-angularjs'),
+    path.resolve(__dirname, 'app/13-migration/02-angular5/style.scss'),
+];
 
 // const {
 //     BundleAnalyzerPlugin

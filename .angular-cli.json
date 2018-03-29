@@ -1,8 +1,8 @@
 {
     "apps": [{
         "appRoot": ".",
-        "root": "app/11-decorators/05-host",
-        "prefix": "your-prefix"
+        "root": "app/13-migration/02-angular5",
+        "prefix": "jlg"
     }],
     "defaults": {
         "styleExt": "scss",
