@@ -40,10 +40,15 @@ export class HomeComponent {
       .catch(error => console.error('error', error));
   }
 
-  update(): Promise<any> {
-    return Promise.resolve().then(() => {
-      console.log('coucou');
-    });
+  update(resource): Promise<any> {
+    console.log('update', this.resourceName);
+    const object = {
+      id: resource.id,
+      name: resource.newName,
+    };
+    return this.rest.update(this.resourceName, resource.id, object)
+      .then(() => this.query())
+      .catch(error => console.error('error', error));
   }
 
   delete(): Promise<any> {

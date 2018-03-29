@@ -27,10 +27,10 @@
           <input type="text" [(ngModel)]="ticket.newName" />
         </td>
         <td>
-          <button [jlg-click-and-disable]="update.bind(this)">Update</button>
+          <button [jlg-click-and-disable]="update.bind(this, ticket)">Update</button>
         </td>
         <td>
-          <button [jlg-click-and-disable]="delete.bind(this)">Delete</button>
+          <button [jlg-click-and-disable]="delete.bind(this, ticket.id)">Delete</button>
         </td>
       </tr>
     </table>
