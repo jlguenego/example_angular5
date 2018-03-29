@@ -22,13 +22,16 @@
 // })();
 
 import { NgModule } from '@angular/core';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { BodyComponent } from './body/body.component';
 
 @NgModule({
     imports: [],
-    declarations: [],
+    declarations: [HeaderComponent, FooterComponent, BodyComponent],
     providers: [
 
     ],
-    exports: [],
+    exports: [HeaderComponent, FooterComponent, BodyComponent],
 })
 export class JLGLayoutModule { }
