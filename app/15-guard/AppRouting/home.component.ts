@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConnectionService } from '../connection.service';
+import { ConnectionGuardService } from '../connection-guard.service';
 
 @Component({
   selector: 'home-view',
@@ -18,5 +18,5 @@ import { ConnectionService } from '../connection.service';
 `,
 })
 export class HomeComponent {
-  constructor(public service: ConnectionService) { }
+  constructor(public service: ConnectionGuardService) { }
 }

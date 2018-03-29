@@ -8,12 +8,12 @@ import { HomeComponent } from './AppRouting/home.component';
 import { AboutComponent } from './AppRouting/about.component';
 import { ProductComponent } from './AppRouting/product.component';
 import { FormsModule } from '@angular/forms';
-import { ConnectionService } from './connection.service';
+import { ConnectionGuardService } from './connection-guard.service';
 
 @NgModule({
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   declarations: [AppComponent, HomeComponent, AboutComponent, ProductComponent],
   bootstrap: [AppComponent], 
-  providers: [ConnectionService],
+  providers: [ConnectionGuardService],
 })
 export class AppModule { }
