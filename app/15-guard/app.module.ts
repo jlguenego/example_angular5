@@ -9,10 +9,11 @@ import { AboutComponent } from './AppRouting/about.component';
 import { ProductComponent } from './AppRouting/product.component';
 import { FormsModule } from '@angular/forms';
 import { ConnectionGuardService } from './connection-guard.service';
+import { NotFoundComponent } from './AppRouting/not-found.component';
 
 @NgModule({
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  declarations: [AppComponent, HomeComponent, AboutComponent, ProductComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, ProductComponent, NotFoundComponent],
   bootstrap: [AppComponent], 
   providers: [ConnectionGuardService],
 })
