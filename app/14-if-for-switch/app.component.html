@@ -1,0 +1,20 @@
+<header>
+    *ngIf *ngFor *ngSwitch
+</header>
+
+<section>
+    <button (click)="show=!show">Toggle</button>
+
+    <div *ngIf="show">
+        <ul>
+            <li *ngFor="let person of persons; let i = index;">{{i}} {{person}}</li>
+        </ul>
+        <br>
+        <div [ngSwitch]="someone">
+            <div *ngSwitchCase="'Jean-Louis'">Hello Jean-Louis!</div>
+            <div *ngSwitchCase="'Maïté'">Hello Maïté!</div>
+            <div *ngSwitchCase="'Dany'">Hello Dany!</div>
+            <div *ngSwitchDefault>Hello Anybody!</div>
+        </div>
+    </div>
+</section>
