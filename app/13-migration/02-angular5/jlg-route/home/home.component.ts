@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RestService } from '../../jlg-misc/rest.service';
 
 @Component({
   selector: 'jlg-home',
@@ -6,6 +7,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  resourceName = 'ticket';
   newTicket = {
     id: undefined,
     name: undefined,
@@ -14,7 +16,11 @@ export class HomeComponent {
     id: undefined,
     name: undefined,
   }
-  constructor() { }
+  tickets = [];
+
+  constructor(private rest: RestService) {
+    rest.baseUrl = '../../../ws';
+  }
 
   create(): Promise<any> {
     return Promise.resolve().then(() => {
@@ -41,9 +47,14 @@ export class HomeComponent {
   }
 
   query(): Promise<any> {
-    return Promise.resolve().then(() => {
-      console.log('coucou');
-    });
+    console.log('query', this.resourceName);
+    return this.rest.retrieveAll(this.resourceName)
+      .then(response => {
+        this.tickets = response.content;
+        console.log('this.tickets', this.tickets);
+        console.log('this', this);
+      })
+      .catch(error => console.error('error', error));
   }
 
   empty(): Promise<any> {

@@ -20,7 +20,7 @@
         <th>Update</th>
         <th>Delete</th>
       </tr>
-      <tr ng-repeat="ticket in tickets track by $index">
+      <tr *ngFor="let ticket of tickets">
         <td>{{ticket.id}}</td>
         <td>{{ticket.name}}</td>
         <td>
@@ -45,3 +45,6 @@
     <div ng-cloak>Retrieve Ticket: {{ticket}}</div>
   </fieldset>
 </section>
+
+tickets:  {{tickets|json}}
+ticket:  {{ticket|json}}
