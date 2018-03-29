@@ -8,8 +8,8 @@ import { RestService } from '../../jlg-misc/rest.service';
 })
 export class HomeComponent {
   resourceName = 'ticket';
+  id: number = 2;
   newTicket = {
-    id: undefined,
     name: undefined,
   };
   ticket = {
@@ -23,15 +23,21 @@ export class HomeComponent {
   }
 
   create(): Promise<any> {
-    return Promise.resolve().then(() => {
-      console.log('coucou');
-    });
+    console.log('create', this.resourceName);
+    return this.rest.create(this.resourceName, this.newTicket)
+      .then(() => this.query())
+      .catch(error => console.error('error', error));
   }
 
   retrieve(): Promise<any> {
-    return Promise.resolve().then(() => {
-      console.log('coucou');
-    });
+    console.log('retrieve', this.resourceName);
+    this.ticket = undefined;
+    return this.rest.retrieve(this.resourceName, this.id)
+      .then(resource => {
+        this.ticket = resource.content;
+        console.log('this.ticket', this.ticket);
+      })
+      .catch(error => console.error('error', error));
   }
 
   update(): Promise<any> {
@@ -58,9 +64,10 @@ export class HomeComponent {
   }
 
   empty(): Promise<any> {
-    return Promise.resolve().then(() => {
-      console.log('coucou');
-    });
+    console.log('deleteAll', this.resourceName);
+    return this.rest.deleteAll(this.resourceName)
+      .then(resources => this.tickets = [])
+      .catch(error => console.error('error', error));
   }
 
 }

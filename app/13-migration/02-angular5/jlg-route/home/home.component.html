@@ -36,15 +36,12 @@
     </table>
   </fieldset>
 
-  <fieldset ng-init="id = 2">
-    <input type="number" ng-model="id" />
+  <fieldset>
+    <input type="number" [(ngModel)]="id" />
     <br/>
     <button [jlg-click-and-disable]="retrieve.bind(this)">Retrieve the ticket</button>
     <br/>
     <br/>
-    <div ng-cloak>Retrieve Ticket: {{ticket}}</div>
+    <div ng-cloak>Retrieve Ticket: {{ticket|json}}</div>
   </fieldset>
 </section>
-
-tickets:  {{tickets|json}}
-ticket:  {{ticket|json}}
