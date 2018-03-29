@@ -1,3 +1,47 @@
-<p>
-  home works!
-</p>
+<h1>Rest Example</h1>
+<section>
+  <label>New Ticket name:
+    <input type="text" placeholeder="Ex: John" [(ngModel)]="newTicket.name">
+  </label>
+  <button [jlg-click-and-disable]="create.bind(this)">Create</button>
+  <br/>
+  <br/>
+  <fieldset>
+
+    <button [jlg-click-and-disable]="query.bind(this)">Rafraichir la liste des tickets</button>&nbsp;
+    <button [jlg-click-and-disable]="empty.bind(this)">Delete All</button>
+    <br/>
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>New name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <tr ng-repeat="ticket in tickets track by $index">
+        <td>{{ticket.id}}</td>
+        <td>{{ticket.name}}</td>
+        <td>
+          <input type="text" [(ngModel)]="ticket.newName" />
+        </td>
+        <td>
+          <button [jlg-click-and-disable]="update.bind(this)">Update</button>
+        </td>
+        <td>
+          <button [jlg-click-and-disable]="delete.bind(this)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+
+  <fieldset ng-init="id = 2">
+    <input type="number" ng-model="id" />
+    <br/>
+    <button [jlg-click-and-disable]="retrieve.bind(this)">Retrieve the ticket</button>
+    <br/>
+    <br/>
+    <div ng-cloak>Retrieve Ticket: {{ticket}}</div>
+  </fieldset>
+</section>
