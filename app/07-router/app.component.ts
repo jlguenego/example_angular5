@@ -7,6 +7,7 @@ import './app.component.scss';
   <header>
     <nav>
     <a routerLink="/">Home</a>
+    <a routerLink="/product/5">Product#5</a>
     <a routerLink="/about">About</a>
     </nav>
   </header>
