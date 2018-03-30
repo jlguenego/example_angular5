@@ -31,3 +31,20 @@ function f3() {
 }
 
 f3();
+
+const message = 'Really.'
+
+const template = `
+I love template.
+${message}
+`;
+
+const array = [1,3,7].map(x => 3*x);
+console.log('array', array);
+
+const showMyArgs = (...args) => {
+    console.log('args', args);
+}
+
+showMyArgs('coucou', 1, 2, 'trois');
+

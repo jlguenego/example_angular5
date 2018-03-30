@@ -6,10 +6,8 @@ async function sleep(time) {
     });
 }
 
-
 (async () => {
     console.log('start');
     await sleep(1000);
     console.log('end');
 })();
-
