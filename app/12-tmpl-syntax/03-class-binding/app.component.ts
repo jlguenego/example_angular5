@@ -4,12 +4,11 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `
 <header>Class binding</header>
-  <div *ngFor="let str of ['coucou', 'hello', 'truc', 'bidule']; let i = index" [class.odd]="i % 2">{{str}} {{i}}</div>
+  <div [style.padding]="myPadding" *ngFor="let str of ['coucou', 'hello', 'truc', 'bidule']; let i = index" [class.odd]="i % 2">{{str}} {{i}}</div>
 `,
 styles: [
   `
   div {
-    padding: 1em;
     background: hsl(0, 0%, 98%);
   }
   .odd {
@@ -18,4 +17,6 @@ styles: [
   `
 ]
 })
-export class AppComponent { }
+export class AppComponent { 
+  myPadding = '1em';
+}
