@@ -1,4 +1,4 @@
-import { getAge} from "@jlg-example-angular-common/age";
+import { getAge } from "@jlg-example-angular-common/age";
 
 // Exemple of interface (kind of user defined type)
 interface Person {
@@ -19,4 +19,51 @@ person = {
 };
 
 sayHello(person);
+
+
+// primitive type:
+let s: string;
+let n: number;
+let b: boolean;
+s = 'hello';
+n = 34;
+b = false;
+console.log('s, n, b', s, n, b);
+
+// array type
+let a: number[];
+a = [2, 3, 4];
+
+// function type
+let operation: { (a: number, b: number): number };
+operation = (a, b) => a + b;
+console.log('1+2=', operation(1, 2));
+
+// class type
+class Human implements Person {
+    birthday: Date;
+    name: string;
+
+    // constructor can take attribute in input. It avoids boilerplate code.
+    constructor(public firstname) {};
+}
+
+// constructor type
+// { new(...args: any[]): {} },
+function construct(constructor: { new(...args: any[]): {} }, args: any[]) {
+    var c: any = function () {
+        console.log('I am instantiating a ', constructor.name);
+        constructor.apply(this, args);
+        console.log('%s instantiated', constructor.name, this);
+    }
+    c.prototype = constructor.prototype;
+    return new c();
+}
+
+const p = construct(Human, ['Dany']);
+console.log('p', p);
+
+
+
+
 

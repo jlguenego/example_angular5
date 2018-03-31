@@ -48,3 +48,41 @@ const showMyArgs = (...args) => {
 
 showMyArgs('coucou', 1, 2, 'trois');
 
+const f4 = () => {
+    console.log('do nothing');
+}
+
+const add = (x, y) => x + y;
+
+console.log('1+2=' + add(1,2));
+
+class Vehicle {
+    constructor(price) {
+        this.price = price;
+    }
+    start() {
+        console.log('broum broum !');
+    }
+
+    stop() {
+        console.log('huuuuuuuuc.');
+    }
+}
+
+class Car extends Vehicle {
+    constructor(price, color) {
+        super();
+        this.color = color;
+    }
+    turn(direction) {
+        console.log('watch out I turn on', direction);
+    }
+}
+
+const ferrari = new Car(200000, 'red');
+ferrari.start();
+ferrari.turn('left');
+ferrari.stop();
+console.log('ferrari', ferrari);
+
+

@@ -17,6 +17,6 @@ import { Component } from '@angular/core';
 </section>
 `,
 })
-export class AboutComponent {
+export class AboutComponent { }
 
-}
+
