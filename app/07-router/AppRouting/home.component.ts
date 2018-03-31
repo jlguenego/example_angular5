@@ -12,6 +12,6 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent {
   public constructor(private titleService: Title) {
-    this.titleService.setTitle('About');
+    this.titleService.setTitle('Home');
   }
 }
