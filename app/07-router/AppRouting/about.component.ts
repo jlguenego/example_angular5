@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'about-view',
@@ -17,6 +18,13 @@ import { Component } from '@angular/core';
 </section>
 `,
 })
-export class AboutComponent { }
+export class AboutComponent {
+  public constructor(private titleService: Title) {
+    this.titleService.setTitle('About');
+  }
+
+
+
+}
 
 
