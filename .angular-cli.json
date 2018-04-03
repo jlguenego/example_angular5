@@ -7,7 +7,6 @@
     "defaults": {
         "styleExt": "scss",
         "component": {
-            "changeDetection": "OnPush"
         },
         "service": {
             "spec": false

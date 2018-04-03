@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'about-view',
@@ -20,7 +21,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AboutComponent {
   title: string;
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private titleService: Title) {
     route.data.map(p => p.title).subscribe(title => this.title = title);
+    this.titleService.setTitle('About');
   }
 }
+
+

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'home-view',
@@ -10,5 +11,7 @@ import { Component } from '@angular/core';
 `,
 })
 export class HomeComponent {
-
+  public constructor(private titleService: Title) {
+    this.titleService.setTitle('Home');
+  }
 }
