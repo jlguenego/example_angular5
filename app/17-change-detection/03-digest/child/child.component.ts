@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ApplicationRef }
   selector: 'jlg-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent {
 
@@ -20,7 +20,7 @@ export class ChildComponent {
       this.cd.detectChanges();
 
       // global digest
-      this.cd.markForCheck();
+      // this.cd.markForCheck();
       console.log('tick');
     }, 1000);
   }
