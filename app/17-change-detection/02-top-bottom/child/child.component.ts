@@ -12,8 +12,11 @@ export class ChildComponent implements OnChanges, DoCheck {
 
   @Input() input: string;
 
+  repeat: string;
+
   
   updateMsg(str) {
+    // the error is here. Cannot update the parent while the child digests. (top->bottom)
     this.parent.message = str;
   }
 
@@ -26,6 +29,7 @@ export class ChildComponent implements OnChanges, DoCheck {
 
   ngDoCheck(): void {
     console.log('ngDoCheck', this.input);
+    this.repeat = this.input + this.input;
   }
 
 }
