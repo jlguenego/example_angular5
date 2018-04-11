@@ -20,7 +20,7 @@ export class ChildComponent {
       this.cd.detectChanges();
 
       // global digest
-      // this.cd.markForCheck();
+      this.cd.markForCheck();
       console.log('tick');
     }, 1000);
   }
