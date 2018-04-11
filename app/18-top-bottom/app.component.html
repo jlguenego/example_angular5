@@ -1,0 +1,11 @@
+<header>
+    Change detector
+</header>
+
+<section>
+    <p>message: {{message}}</p>
+    <button (click)="message = 'coucou'">Update message to 'coucou'</button>
+    <jlg-child [input]="message"></jlg-child>
+    <p>When clicking on the button, it will generate an error. Why ?</p>
+
+</section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -8,9 +8,10 @@ import { ChangeDetectionStrategy } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor() {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
     setInterval(() => {
       this.counter++;
+      // this.changeDetectorRef.markForCheck();
     }, 1000);
   }
 
