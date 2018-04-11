@@ -16,6 +16,9 @@ export class ChildComponent {
     setInterval(() => {
       this.counter++;
 
+      // should throw an error
+      // this.cd.checkNoChanges();
+
       // local digest
       this.cd.detectChanges();
 
