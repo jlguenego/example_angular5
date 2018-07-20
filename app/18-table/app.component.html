@@ -1,0 +1,13 @@
+<header>
+   Table with 4 objects.
+</header>
+
+<section>
+    <table>
+        <tr *ngFor="let thing of things; let i = index;">
+            <td>{{i}}</td>
+            <td>{{thing.name}}</td>
+            <td>{{thing.color}}</td>
+        </tr>
+    </table>
+</section>
