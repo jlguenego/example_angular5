@@ -26,36 +26,29 @@
         return () => console.log('unsubscribe o2');
     });
 
-    const intersection = (t, o1, o2) => Rx.Observable.create(observer => {
-        let acc = { o1: undefined, o2: undefined };
+    const intersection = (t, ...observables) => Rx.Observable.create(observer => {
+        let acc = new Array(observables.length).fill(undefined);
         let start = 0;
 
         const fn = index => x => {
             const now = Date.now();
-            // console.log(now, now - start);
+            console.log(now, now - start);
             if (now - start > t) {
-                acc.o1 = undefined;
-                acc.o2 = undefined;
+                acc = new Array(observables.length).fill(undefined);
                 start = now;
             }
-            if (index === 0) {
-                acc.o1 = x;
-            }
-            if (index === 1) {
-                acc.o2 = x;
-            }
+            acc[index] = x;
             console.log(acc);
-            if (acc.o1 && acc.o2) {
+            if (!acc.includes(undefined)) {
                 observer.next(acc);
-                acc = { o1: undefined, o2: undefined };
+                acc = new Array(observables.length).fill(undefined);
             }
         };
 
-        o1.subscribe(fn(0));
-        o2.subscribe(fn(1));
+        observables.forEach((o, i) => o.subscribe(fn(i)));
     });
 
-    const o3 = intersection(60, o1, o2);
+    const o3 = intersection(70, o1, o2);
     o3.subscribe(
         x => console.log('next:', x),
         x => console.log('error:', x),
