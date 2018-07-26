@@ -16,11 +16,9 @@
         }
     });
 
-    var s1, s2;
-
     console.log('just before subscribe 1');
     // SUBSCRIBE
-    s1 = myObs.subscribe( // EXECUTE
+    var s1 = myObs.subscribe( // EXECUTE
         {
             next: x => console.log('got value ' + x),
             error: err => console.error('something wrong occurred: ' + err),
@@ -28,6 +26,7 @@
         });
     console.log('just after subscribe 1');
 
+    var s2;
     setTimeout(() => {
         console.log('just before subscribe 2');
         s2 = myObs.subscribe({
