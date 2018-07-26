@@ -5,44 +5,57 @@
 
     const o1 = Rx.Observable.create(async observer => {
         observer.next(1);
-        await sleep(100);
+        await sleep(300);
         observer.next(2);
-        await sleep(1000);
+        await sleep(500);
         observer.next(3);
-        await sleep(1000);
         observer.complete();
         return () => console.log('unsubscribe o1');
     });
 
     const o2 = Rx.Observable.create(async observer => {
-        await sleep(300);
+        await sleep(10);
         observer.next('a');
-        await sleep(100);
+        await sleep(400);
         observer.next('b');
-        await sleep(900);
+        await sleep(50);
         observer.next('c');
-        await sleep(1000);
+        await sleep(340);
         observer.next('d');
-        await sleep(100);
         observer.complete();
         return () => console.log('unsubscribe o2');
     });
 
-    const merge = (...args) => Rx.Observable.create(observer => {
-        let counter = 0;
-        args.forEach(o => o.subscribe(
-            x => observer.next(x),
-            x => observer.error(x),
-            () => {
-                counter++;
-                if (counter === args.length) {
-                    observer.complete();
-                }
+    const intersection = (t, o1, o2) => Rx.Observable.create(observer => {
+        let acc = { o1: undefined, o2: undefined };
+        let start = 0;
+
+        const fn = index => x => {
+            const now = Date.now();
+            // console.log(now, now - start);
+            if (now - start > t) {
+                acc.o1 = undefined;
+                acc.o2 = undefined;
+                start = now;
             }
-        ));
+            if (index === 0) {
+                acc.o1 = x;
+            }
+            if (index === 1) {
+                acc.o2 = x;
+            }
+            console.log(acc);
+            if (acc.o1 && acc.o2) {
+                observer.next(acc);
+                acc = { o1: undefined, o2: undefined };
+            }
+        };
+
+        o1.subscribe(fn(0));
+        o2.subscribe(fn(1));
     });
 
-    const o3 = merge(o1, o2);
+    const o3 = intersection(60, o1, o2);
     o3.subscribe(
         x => console.log('next:', x),
         x => console.log('error:', x),
