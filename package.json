@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "express": "node ./app/00-prerequisite/05-express/server.js"
   },
   "keywords": [],
   "author": "Jean-Louis GUENEGO",
