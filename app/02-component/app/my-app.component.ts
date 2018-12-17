@@ -23,7 +23,7 @@ export class MyAppComponent implements OnInit, OnChanges, DoCheck, AfterContentI
   }
 
   ngDoCheck() {
-    console.log('MyAppComponent: ngDoCheck, message=|%s|, on=|%s|', this.message, this.on);
+    console.log('MyAppComponent: ngDoCheck, message=|%s|, on=|%s|', this.msg, this.on);
   }
 
   ngAfterContentInit() {
