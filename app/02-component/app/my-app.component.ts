@@ -6,14 +6,14 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './my-app.component.html',
 })
 export class MyAppComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-  message = '';
+  msg = '';
 
   on: boolean = true;
 
   ngOnInit() {
     // run as a post constructor
     console.log('MyAppComponent: ngOnInit');
-    Observable.interval(1000).take(2).map(n => ['Angular', 'Angular is Good'][n]).subscribe(str => this.message = str);
+    Observable.interval(1000).take(2).map(n => ['Angular', 'Angular is Good'][n]).subscribe(str => this.msg = str);
     Observable.of(false).delay(3000).subscribe(n => this.on = n);
   }
 
