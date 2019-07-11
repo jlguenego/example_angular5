@@ -32,7 +32,7 @@
                 <li class="error" *ngIf="f.controls.region.errors.required">Choose a region.</li>
             </ul>
         </label>
-        <button (click)="reset()">Reset</button>
+        <button type="reset" (click)="reset()">Reset</button>
         <button type="submit" [disabled]="f.invalid">Submit</button>
     </form>
     

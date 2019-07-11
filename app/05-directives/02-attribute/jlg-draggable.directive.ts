@@ -5,10 +5,10 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class JLGDraggableDirective {
 
-  startX: number = 0;
-  startY: number = 0;
-  x: number = 0;
-  y: number = 0;
+  startX = 0;
+  startY = 0;
+  x = 0;
+  y = 0;
 
 
   constructor(private element: ElementRef) { }
@@ -25,8 +25,16 @@ export class JLGDraggableDirective {
       style.backgroundColor = this.color;
     }
   }
+  private _doesHighlight: boolean = true;
+  @Input('jlg-draggable') set doesHighlight(val) {
+    console.log('val', val);
+    console.log('typeof val', typeof val);
+    this._doesHighlight = val;
+  }
 
-  @Input('jlg-draggable') doesHighlight: boolean = true;
+  get doesHighlight() {
+    return this._doesHighlight;
+  }
 
   @Input('bg-color') color: string = 'lightgrey';
 
