@@ -18,7 +18,7 @@
     "@angular/platform-browser": "^5.2.11",
     "@angular/platform-browser-dynamic": "^5.2.11",
     "@angular/router": "^5.2.11",
-    "angular": "^1.7.2",
+    "angular": "^1.8.0",
     "angular-resource": "^1.7.2",
     "angular-route": "^1.7.2",
     "core-js": "^2.5.7",
